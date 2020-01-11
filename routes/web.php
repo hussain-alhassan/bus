@@ -11,3 +11,4 @@
 |
 */
 Route::get('/', 'TravelerController@index');
+Route::get('/trips/{traveler_id}', 'TravelerController@showTrips');

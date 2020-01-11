@@ -10,31 +10,36 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand/logo -->
-    <a class="navbar-brand" href="/">
-      <img src="logo.jpg" alt="logo" style="width:40px;">
-    </a>
 
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 1</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 2</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 3</a>
-      </li>
-      <li class="nav-item">
-        <a class="navbar-nav ml-auto" style="color: #ffffff">{{ __('messages.welcome', ['name' => 'Traveler']) }}</a>
-      </li>
-    </ul>
-  </nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+            <img src="logo.jpg" alt="logo" style="width:40px;">
+        </a>
 
-  <div class="container">
-    @yield('body')
-  </div>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/trips/{{'123'}}">{{__('messages.my_trips')}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <span class="navbar-nav ml-auto" style="color: #ffffff">
+                        {{-- later will get the name from Auth --}}
+                        {{ __('messages.welcome', ['name' => 'Ali'])}}
+                    </span>
+                </li>
+            </ul>
+            <a href="/logout" class="btn btn-info ml-2" role="button">{{__('messages.logout')}}</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        @yield('body')
+    </div>
+
 </body>
 </html>
