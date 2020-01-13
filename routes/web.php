@@ -10,5 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'TravelerController@index');
-Route::get('/trips/{traveler_id}', 'TravelerController@showTrips');
+Route::get('/', 'HomeController@index');
+Route::get('/about', 'HomeController@about');
+
+Route::group(['middleware'=>'auth'],function () {
+    Route::get('/trips/{traveler_id}', 'TravelerController@showTrips')->name('trips');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

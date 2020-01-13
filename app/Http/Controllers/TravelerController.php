@@ -16,15 +16,6 @@ class TravelerController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('home');
-    }
-
-    /**
      * Display the specified resource.
      * @param  int  $travelerID
      * @return \Illuminate\View\View
