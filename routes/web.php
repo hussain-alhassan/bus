@@ -14,7 +14,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
 
 Route::group(['middleware'=>'auth'],function () {
-    Route::get('/trips/{traveler_id}', 'TravelerController@showTrips')->name('trips');
+    Route::get('/trips', 'TripController@show');
 });
 
 Auth::routes();

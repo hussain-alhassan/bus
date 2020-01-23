@@ -8,6 +8,6 @@ return [
     'register' => 'Register',
     'about_us_link' => 'About Us',
     'about_us_page_title' => 'About Bus Team',
-    'trips_page_title' => 'Trips Page',
+    'trips_page_title' => 'My Trips',
 
 ];

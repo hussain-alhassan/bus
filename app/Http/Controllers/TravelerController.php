@@ -14,14 +14,4 @@ class TravelerController extends Controller
         $lang = session('lang', 'en');
         App::setlocale($lang);
     }
-
-    /**
-     * Display the specified resource.
-     * @param  int  $travelerID
-     * @return \Illuminate\View\View
-     */
-    public function showTrips($travelerID)
-    {
-        return view('trips', compact('traveler'));
-    }
 }
