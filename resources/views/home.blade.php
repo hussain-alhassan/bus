@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            @include('partials.search-trips')
+            @include('partials.search-trips-form')
         </div>
     </div>
 </div>

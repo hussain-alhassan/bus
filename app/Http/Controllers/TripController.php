@@ -2,43 +2,86 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class TripController extends Controller
 {
-    public function __construct()
-    {
-        $lang = session('lang', 'en');
-        App::setlocale($lang);
-    }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Search for available trips
+     * @return mixed
+     * @throws \Exception
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        // will improve the validation later
+        $request->validate([
+            'from' => 'required',
+            'to' => 'required',
+            'depart' => 'required|date_format:Y-m-d',
+            'return' => 'nullable|date_format:Y-m-d',
+            'seats' => 'required|min:1|max:2',
+        ]);
+
+        $departDate = clone new Carbon($request->query('depart'));
+
+        // need to work on the return trip more
+        $return = null;
+        if(!empty($request->query('return'))) $return = clone new Carbon($request->query('return'));
+
+        $searchInputs = [
+            'from' => Str::ucfirst($request->query('from')),
+            'to' => Str::ucfirst($request->query('to')),
+            'depart' => $departDate,
+            'return' => $return,
+            'seats' => $request->query('seats'),
+        ];
+
+        /* "First" available trip calculation (later will come from the model) */
+        // assuming first trip depart at 9:30pm (travel agency will enter departure time)
+        $departureHour1 = '21'; // 9pm
+        $departureMinute1 = '30'; // because 9:30pm
+
+        // initially comes from agency control panel, but later should be from multiple trips average calculation
+        $tripDuration1 = '10';
+
+        // total hours from beginning of the day because Datepicker starts at 00:00 time
+        $totalHours1 = intval($departureHour1) + intval($tripDuration1);
+        $arrivalDateTime1 = $departDate->copy()->addHours($totalHours1)->addMinutes($departureMinute1);
+
+        /* "Second" available trip calculation (later will come from the model) */
+        $departureHour2 = '20'; // 8pm
+        $departureMinute2 = '0'; // because 8:00pm
+        $tripDuration2 = '11';
+
+        $totalHours2 = intval($departureHour2) + intval($tripDuration2);
+        $arrivalDateTime2 = $departDate->copy()->addHours($totalHours2)->addMinutes($departureMinute2);
+
+        // Mock returned available trips from DB
+        $availableTrips = [
+            [
+                'agency' => 'Al salem',
+                'depart' => $departDate,
+                'depart_time' => '9:30pm',
+                'arrival_day' => $arrivalDateTime1->format('l'),
+                'arrival_time' => $arrivalDateTime1->format('h:ia')
+            ],
+            [
+                'agency' => 'Gulf Bus',
+                'depart' => $searchInputs['depart'],
+                'depart_time' => '8:00pm',
+                'arrival_day' => $arrivalDateTime2->format('l'),
+                'arrival_time' => $arrivalDateTime2->format('h:ia')
+            ]
+        ];
+
+        return view('available-trips', compact('searchInputs', 'availableTrips'));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // What if traveler books round trip (Multi-city)?
-        // From Alahsa -> Dubai
-        // Return from Dunai -> Dammam
-    }
-
-    /**
-     * Display the specified resource.
-     *
+     * Show user trips (upcoming & history of trips)
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show()
@@ -50,35 +93,46 @@ class TripController extends Controller
                 'id' => 1,
                 'from' => 'Al ahsa',
                 'to' => 'Dubai',
-                'depart' => 12, // will change it later
+                'depart' => Carbon::yesterday(),
                 'return' => 'some return date',
-                'company_id' => 5,
-                'seats' => 3,
+                'agency_id' => 6,
+                'seats' => 1,
             ],
             [
                 'id' => 2,
                 'from' => 'Dammam',
                 'to' => 'Dubai',
-                'depart' => 4,
+                'depart' => Carbon::tomorrow(),
                 'return' => null,
-                'company_id' => 2,
+                'agency_id' => 2,
                 'seats' => 2,
+            ],
+            [
+                'id' => 1,
+                'from' => 'Al ahsa',
+                'to' => 'Dubai',
+                'depart' => new Carbon('last month'),
+                'return' => 'some return date',
+                'agency_id' => 5,
+                'seats' => 3,
             ],
             [
                 'id' => 2,
                 'from' => 'Dubai',
                 'to' => 'Dammam',
-                'depart' => 1,
+                'depart' => new Carbon('next month'),
                 'return' => null,
-                'company_id' => 2,
-                'seats' => 1,
-            ]
+                'agency_id' => 1,
+                'seats' => 4,
+            ],
         ];
+
+        $endOfToday = Carbon::today()->endOfDay();
 
         $upcomingTrips = [];
         $history = [];
         foreach ($trips as $trip) {
-            if ($trip['depart'] < 5) {
+            if ($trip['depart'] > $endOfToday) {
                 array_push($upcomingTrips, $trip);
             } else {
                 array_push($history, $trip);
@@ -86,39 +140,5 @@ class TripController extends Controller
         }
 
         return view('trips', compact('upcomingTrips', 'history'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

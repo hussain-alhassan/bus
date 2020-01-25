@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">{{__('texts.trips_page_title')}}</div>
                     <div class="card-body">
-                        @include('trips-list')
+                        @include('partials.trips-list')
                     </div>
                 </div>
             </div>
