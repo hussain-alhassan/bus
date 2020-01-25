@@ -10,11 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', 'HomeController@index');
 Route::get('/about', 'HomeController@about');
+Route::get('/trips/search', 'TripController@search');
 
 Route::group(['middleware'=>'auth'],function () {
-    Route::get('/trips/{traveler_id}', 'TravelerController@showTrips')->name('trips');
+    Route::get('/trips', 'TripController@show');
 });
 
 Auth::routes();
