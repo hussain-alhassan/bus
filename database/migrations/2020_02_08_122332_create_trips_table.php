@@ -17,14 +17,17 @@ class CreateTripsTable extends Migration
             $table->bigIncrements('id');
             $table->string('trip_number');
 
-            $table->unsignedBigInteger('agency_id');
-            $table->foreign('agency_id')->references('id')->on('agencies');
+            $table->unsignedBigInteger('agency_id')->index();
+            $table->foreign('agency_id')->references('id')->on('agencies')
+                ->onDelete('cascade');
 
-            $table->unsignedBigInteger('from_city_id');
-            $table->foreign('from_city_id')->references('id')->on('cities');
+            $table->unsignedBigInteger('from_city_id')->index();
+            $table->foreign('from_city_id')->references('id')->on('cities')
+                ->onDelete('cascade');
 
-            $table->unsignedBigInteger('to_city_id');
-            $table->foreign('to_city_id')->references('id')->on('cities');
+            $table->unsignedBigInteger('to_city_id')->index();
+            $table->foreign('to_city_id')->references('id')->on('cities')
+                ->onDelete('cascade');
 
             $table->dateTime('depart');
             $table->string('duration');

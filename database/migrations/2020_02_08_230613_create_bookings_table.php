@@ -16,17 +16,21 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');
 
-            $table->unsignedBigInteger('from_city_id');
-            $table->foreign('from_city_id')->references('id')->on('cities');
+            $table->unsignedBigInteger('from_city_id')->index();
+            $table->foreign('from_city_id')->references('id')->on('cities')
+                ->onDelete('cascade');
 
-            $table->unsignedBigInteger('to_city_id');
-            $table->foreign('to_city_id')->references('id')->on('cities');
+            $table->unsignedBigInteger('to_city_id')->index();
+            $table->foreign('to_city_id')->references('id')->on('cities')
+                ->onDelete('cascade');
 
-            $table->unsignedBigInteger('office_id');
-            $table->foreign('office_id')->references('id')->on('offices');
+            $table->unsignedBigInteger('office_id')->index();
+            $table->foreign('office_id')->references('id')->on('offices')
+                ->onDelete('cascade');
 
             $table->dateTime('depart');
             $table->string('seats');

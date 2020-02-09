@@ -16,8 +16,9 @@ class CreateBusesTable extends Migration
         Schema::create('buses', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('agency_id');
-            $table->foreign('agency_id')->references('id')->on('agencies');
+            $table->unsignedBigInteger('agency_id')->index();
+            $table->foreign('agency_id')->references('id')->on('agencies')
+                ->onDelete('cascade');
 
             $table->string('licence_plate');
             $table->string('bus_number')->nullable();

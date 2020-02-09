@@ -16,8 +16,9 @@ class CreateOfficesTable extends Migration
         Schema::create('offices', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('agency_id');
-            $table->foreign('agency_id')->references('id')->on('agencies');
+            $table->unsignedBigInteger('agency_id')->index();
+            $table->foreign('agency_id')->references('id')->on('agencies')
+                ->onDelete('cascade');
 
             $table->text('address');
             $table->text('location_link');
