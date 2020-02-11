@@ -17,7 +17,7 @@ class SuperadminMiddleware
     public function handle($request, Closure $next)
     {
         // checks if user is authenticated (loggedin) and its role is superadmin
-        if (Auth::check() && Auth::user()->role == 's') {
+        if (Auth::check() && Auth::user()->role === 's') {
             // tells the request to go through
             return $next($request);
         }

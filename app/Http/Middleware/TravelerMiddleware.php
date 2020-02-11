@@ -16,7 +16,7 @@ class TravelerMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role == 't') {
+        if (Auth::check() && Auth::user()->role === 't') {
             return $next($request);
         }
 
