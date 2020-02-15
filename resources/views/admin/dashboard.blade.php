@@ -1,4 +1,4 @@
-@extends('layouts.adminLayout')
+@extends('layouts.agentLayout')
 @section('title')
     Dashboard
 @stop
