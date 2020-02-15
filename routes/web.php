@@ -33,18 +33,20 @@ Route::group(['middleware' => 'traveler'], function() {
 /////////// End of Agent section //////////////
 
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+
+
 Route::get('/about', 'HomeController@about');
-Route::get('/trips/search', 'TripController@search')->name('my_trip');
+Route::get('/trips/search', 'traveler\TripController@search')->name('my_trip');
 
 Route::group(['middleware'=>'auth'],function () {
-    Route::get('/trips', 'TripController@show');
+    Route::get('/trips', 'traveler\TripController@show');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
