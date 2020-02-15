@@ -30,6 +30,7 @@ class AddInitialExtraUserColumns extends Migration
             $table->string('igama_id')->nullable();
             $table->dateTime('igama_exp_date')->nullable();
             $table->string('igama_issuance_city')->nullable();
+            $table->char('role', 1)->default('t');
         });
     }
 

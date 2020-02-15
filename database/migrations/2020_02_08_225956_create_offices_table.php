@@ -20,6 +20,7 @@ class CreateOfficesTable extends Migration
             $table->foreign('agency_id')->references('id')->on('agencies')
                 ->onDelete('cascade');
 
+            $table->string('name');
             $table->text('address');
             $table->text('location_link');
             $table->text('hours');
