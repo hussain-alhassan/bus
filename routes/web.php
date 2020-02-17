@@ -11,27 +11,6 @@
 |
 */
 
-/*///////////// Admin Section //////////////*/
-
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
-    Route::resource('dashboard', 'admin\AdminController');
-});
-/////////// End of Admin section //////////////
-
-/*///////////// Agent Section //////////////*/
-
-Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
-    Route::resource('dashboard', 'agent\AgentController');
-});
-/////////// End of Agent section //////////////
-
-/*///////////// Traveler Section //////////////*/
-
-Route::group(['middleware' => 'traveler'], function() {
-    Route::resource('/', 'traveler\TravelerController');
-});
-/////////// End of Agent section //////////////
-
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -44,6 +23,31 @@ Route::group(['middleware'=>'auth'],function () {
 });
 
 Auth::routes();
+
+/*///////////// Traveler Section //////////////*/
+
+Route::group(['middleware' => 'traveler'], function() {
+    Route::resource('/', 'traveler\TravelerController');
+});
+/////////// End of Agent section //////////////
+
+/*///////////// Agent Section //////////////*/
+
+Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
+    Route::resource('dashboard', 'agent\AgentController');
+});
+/////////// End of Agent section //////////////
+
+
+
+/*///////////// Admin Section //////////////*/
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+    Route::resource('dashboard', 'admin\AdminController');
+});
+/////////// End of Admin section //////////////
+
+
 
 //Route::get('/home', 'HomeController@index')->name('home');
 

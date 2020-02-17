@@ -4,6 +4,8 @@ namespace App\Http\Controllers\traveler;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class TripController extends Controller
 {
@@ -23,6 +25,7 @@ class TripController extends Controller
             'return' => 'nullable|date_format:Y-m-d',
             'seats' => 'required|min:1|max:2',
         ]);
+
 
         $departDate = clone new Carbon($request->query('depart'));
 
