@@ -26,7 +26,6 @@ class TripController extends Controller
             'seats' => 'required|min:1|max:2',
         ]);
 
-
         $departDate = clone new Carbon($request->query('depart'));
 
         // need to work on the return trip more

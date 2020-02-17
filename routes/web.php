@@ -13,8 +13,6 @@
 
 
 Route::get('/', 'HomeController@index')->name('home');
-
-
 Route::get('/about', 'HomeController@about');
 Route::get('/trips/search', 'traveler\TripController@search')->name('my_trip');
 
@@ -46,11 +44,3 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::resource('dashboard', 'admin\AdminController');
 });
 /////////// End of Admin section //////////////
-
-
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
-//Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
