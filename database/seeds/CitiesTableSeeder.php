@@ -13,9 +13,9 @@ class CitiesTableSeeder extends Seeder
     public function run()
     {
         DB::table('cities')->insert([
-                ['name' => 'الأحساء | Al Ahsa', 'is_active' => true, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-                ['name' => 'Dammam | الدمام', 'is_active' => true, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-                ['name' => 'Dubai | دبي', 'is_active' => true, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+                ['name' => 'الأحساء', 'name_en' => 'Al Ahsa', 'is_active' => true, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+                ['name' => 'الدمام', 'name_en' => 'Dammam', 'is_active' => true, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+                ['name' => 'دبي', 'name_en' => 'Dubai', 'is_active' => true, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ]
         );
     }
