@@ -11,18 +11,36 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about');
-Route::get('/trips/search', 'TripController@search');
+Route::get('/trips/search', 'traveler\TripController@search')->name('my_trip');
 
 Route::group(['middleware'=>'auth'],function () {
-    Route::get('/trips', 'TripController@show');
+    Route::get('/trips', 'traveler\TripController@show');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*///////////// Traveler Section //////////////*/
 
-Auth::routes();
+Route::group(['middleware' => 'traveler'], function() {
+    Route::resource('/', 'traveler\TravelerController');
+});
+/////////// End of Traveler section //////////////
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*///////////// Agent Section //////////////*/
+
+Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
+    Route::resource('dashboard', 'agent\AgentController');
+});
+/////////// End of Agent section //////////////
+
+
+
+/*///////////// Admin Section //////////////*/
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+    Route::resource('dashboard', 'admin\AdminController');
+});
+/////////// End of Admin section //////////////

@@ -14,7 +14,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/about') }}">{{__('texts.about_us_link')}}</a>
                 </li>
-                @if(Auth::check())
+                @if(Auth::check() && ( Auth::user()->role === 't' || Auth::user()->role === 'a'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('trips') }}">
                             {{__('texts.my_trips')}}
