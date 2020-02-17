@@ -29,7 +29,7 @@ Auth::routes();
 Route::group(['middleware' => 'traveler'], function() {
     Route::resource('/', 'traveler\TravelerController');
 });
-/////////// End of Agent section //////////////
+/////////// End of Traveler section //////////////
 
 /*///////////// Agent Section //////////////*/
 
