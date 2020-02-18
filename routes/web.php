@@ -37,10 +37,11 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
 /////////// End of Agent section //////////////
 
 
-
 /*///////////// Admin Section //////////////*/
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::resource('dashboard', 'admin\AdminController');
+    Route::get('cities', 'admin\CityController@showCities');
+    Route::get('city/create', 'admin\CityController@create');
 });
 /////////// End of Admin section //////////////
