@@ -191,7 +191,7 @@
                                         <td class="serial">1.</td>
                                         <td class="avatar">
                                             <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/user.jpg" alt=""></a>
+                                                <a href="#"><img class="rounded-circle" src="{{asset('images/avatar/user.jpg')}}" alt=""></a>
                                             </div>
                                         </td>
                                         <td> #5469 </td>
@@ -206,7 +206,7 @@
                                         <td class="serial">2.</td>
                                         <td class="avatar">
                                             <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/user.jpg" alt=""></a>
+                                                <a href="#"><img class="rounded-circle" src="{{asset('images/avatar/user.jpg')}}" alt=""></a>
                                             </div>
                                         </td>
                                         <td> #5468 </td>
@@ -221,7 +221,7 @@
                                         <td class="serial">3.</td>
                                         <td class="avatar">
                                             <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/user.jpg" alt=""></a>
+                                                <a href="#"><img class="rounded-circle" src="{{asset('images/avatar/user.jpg')}}" alt=""></a>
                                             </div>
                                         </td>
                                         <td> #5467 </td>
@@ -236,7 +236,7 @@
                                         <td class="serial">4.</td>
                                         <td class="avatar">
                                             <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/user.jpg" alt=""></a>
+                                                <a href="#"><img class="rounded-circle" src="{{asset('images/avatar/user.jpg')}}" alt=""></a>
                                             </div>
                                         </td>
                                         <td> #5466 </td>
@@ -251,7 +251,7 @@
                                         <td class="serial">5.</td>
                                         <td class="avatar pb-0">
                                             <div class="round-img">
-                                                <a href="#"><img class="rounded-circle" src="images/avatar/user.jpg" alt=""></a>
+                                                <a href="#"><img class="rounded-circle" src="{{asset('images/avatar/user.jpg')}}" alt=""></a>
                                             </div>
                                         </td>
                                         <td> #5465 </td>
