@@ -43,5 +43,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::resource('dashboard', 'admin\AdminController');
     Route::get('cities', 'admin\CityController@showCities');
     Route::get('city/create', 'admin\CityController@create');
+    Route::post('city/store', 'admin\CityController@store');
+    Route::get('city/{city}/edit', 'admin\CityController@edit');
+    Route::post('city/{city}/update', 'admin\CityController@update');
+    Route::get('city/{city}/activate', 'admin\CityController@activate');
+    Route::get('city/{city}/disable', 'admin\CityController@disable');
 });
 /////////// End of Admin section //////////////

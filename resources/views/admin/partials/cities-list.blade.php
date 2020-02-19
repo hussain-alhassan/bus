@@ -10,7 +10,7 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Name EN</th>
                             <th scope="col">Action</th>
@@ -23,12 +23,12 @@
                                 <td>{{$city->name}}</td>
                                 <td>{{$city->name_en}}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary">Edit</a>
+                                    <a href="/admin/city/{{$city->id}}/edit/" class="btn btn-primary">Edit</a>
                                     @if($city->is_active === 1)
-                                        <a href="/admin/city/disable/{{$city->id}}" class="btn btn-danger"
+                                        <a href="/admin/city/{{$city->id}}/disable" class="btn btn-danger"
                                         onclick="return confirm(`Are you sure you want to disable '{{$city->name}}' ?`)">Disable</a>
                                     @else
-                                        <a href="/admin/city/activate/{{$city->id}}" class="btn btn-success"
+                                        <a href="/admin/city/{{$city->id}}/activate" class="btn btn-success"
                                            onclick="return confirm(`Are you sure you want to activate '{{$city->name}}' ?`)">Activate</a>
                                     @endif
                                 </td>

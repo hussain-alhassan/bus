@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'City Management')
+
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
 
                 {{-- show validation errors if there is any --}}
                 @if ($errors->any())
@@ -16,17 +16,11 @@
                     </div>
                 @endif
 
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
                 <div class="card">
-                    <div class="card-header">City Management</div>
+                    <div class="card-header">Edit City</div>
                     <div class="card-body">
-                        <a href="/admin/city/create" class="btn btn-success">Add City</a>
-                        @include('admin.partials.cities-list')
+                        <a href="/admin/cities" class="btn btn-success">Back to Cities</a>
+                        @include('admin.partials.edit-city-form')
                     </div>
                 </div>
             </div>

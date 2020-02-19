@@ -1,4 +1,4 @@
-<form method="POST" action="/admin/city/store">
+<form method="POST" action="/admin/city/{{$city->id}}/update">
     @csrf
 
     <div class="form-group row">
@@ -6,7 +6,7 @@
 
         <div class="col-md-6">
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                   value="{{ old('name') }}" required autocomplete="name" autofocus>
+                   value="{{ old('name') ?? $city->name }}" required autocomplete="name" autofocus>
 
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -21,7 +21,7 @@
 
         <div class="col-md-6">
             <input id="name_en" type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en"
-                   value="{{ old('name_en') }}" required autocomplete="name_en" autofocus>
+                   value="{{ old('name_en') ?? $city->name_en }}" required autocomplete="name_en" autofocus>
 
             @error('name_en')
             <span class="invalid-feedback" role="alert">
@@ -34,7 +34,8 @@
     <div class="form-group row">
         <div class="col-md-6 offset-md-4">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="is_active" {{ old('is_active') ?? '' }}>
+                <input class="form-check-input" type="checkbox" name="is_active"
+                    {{ (old('is_active') || $city->is_active) ? 'checked' : ''}}>
 
                 <label class="form-check-label" for="is_active">
                     Active City
@@ -46,7 +47,7 @@
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">
             <button type="submit" class="btn btn-primary">
-                Add
+                Update
             </button>
         </div>
     </div>
