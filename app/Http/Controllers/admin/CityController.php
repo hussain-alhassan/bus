@@ -36,7 +36,7 @@ class CityController extends Controller
             return redirect()->back()->withErrors($e);
         }
 
-        return redirect('/admin/cities')->with('status', 'City has been created successfully.');
+        return redirect('/admin/cities')->with('success', 'City has been created successfully.');
     }
 
     public function edit(City $city)
@@ -56,21 +56,19 @@ class CityController extends Controller
             return redirect()->back()->withErrors($e);
         }
 
-        return redirect('/admin/cities')->with('status', 'City has been updated successfully.');
+        return redirect('/admin/cities')->with('success', 'City has been updated successfully.');
     }
 
     public function activate(City $city)
     {
         $city->update(['is_active' => 1]);
-        return redirect('/admin/cities')->with('status', 'City has been activated successfully.');
-
+        return redirect('/admin/cities')->with('success', 'City has been activated successfully.');
     }
 
     public function disable(City $city)
     {
         $city->update(['is_active' => 0]);
-        return redirect('/admin/cities')->with('status', 'City has been disabled successfully.');
-
+        return redirect('/admin/cities')->with('success', 'City has been disabled successfully.');
     }
 
     /**
