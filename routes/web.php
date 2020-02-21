@@ -42,7 +42,7 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::resource('dashboard', 'admin\AdminController');
-    Route::get('cities', 'admin\CityController@showCities');
+    Route::get('cities', 'admin\CityController@showCities')->name('cities');
     Route::get('city/create', 'admin\CityController@create');
     Route::post('city/store', 'admin\CityController@store');
     Route::get('city/{city}/edit', 'admin\CityController@edit');

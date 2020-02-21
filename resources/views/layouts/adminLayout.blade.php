@@ -40,7 +40,7 @@
                     <a href="widgets.html"> <i class="menu-icon fa fa-user fa-lg"></i>USERS </a>
                 </li>
                 <li style="font-weight: bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-globe fa-lg"></i>CITIES </a>
+                    <a href="{{ route('cities') }}"> <i class="menu-icon fa fa-globe fa-lg"></i>CITIES </a>
                 </li>
                 <li style="font-weight: bold">
                     <a href="widgets.html"> <i class="menu-icon fa fa-handshake-o fa-lg"></i>AGENCIES </a>
