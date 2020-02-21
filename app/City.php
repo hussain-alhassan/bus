@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
+    protected $guarded = [];
+
     public function bookings()
     {
         return $this->hasMany(Booking::class);

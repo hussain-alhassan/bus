@@ -2,6 +2,7 @@
     <div class="card-header">Find Trips</div>
     <div class="card-body">
 
+        {{-- show validation errors if there is any --}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
