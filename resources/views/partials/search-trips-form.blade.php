@@ -1,26 +1,30 @@
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="card">
+
     <div class="card-header">Find Trips</div>
     <div class="card-body">
-
-        {{-- show validation errors if there is any --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
         <form method="GET" action="/trips/search" novalidate>
             <div class="container">
                 <div class="form-group row">
                     <div class="col-md-2">
                         <label class="col-form-label text-md-right">From</label>
-                        <input type="text" class="form-control @error('from') is-invalid @enderror"
-                               name="from" value="{{ old('from') ?? Request::get('from') }}" required autocomplete="from" autofocus>
-
+                        <select class="form-control" name="from">
+                        @foreach($cities as $city)
+                                <option value="{{$city->id}}" {{$city->id === intval(old('from')) ? 'selected' : ''}}>
+                                    {{$city->name}}
+                                </option>
+                            @endforeach
+                        </select>
                         @error('from')
                         <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -30,9 +34,13 @@
 
                     <div class="col-md-2">
                         <label class="col-form-label text-md-right">To</label>
-                        <input type="text" class="form-control @error('to') is-invalid @enderror"
-                               name="to" value="{{ old('to') ?? Request::get('to') }}" required autocomplete="to">
-
+                        <select class="form-control" name="to">
+                            @foreach($cities as $city)
+                                <option value="{{$city->id}}" {{$city->id === intval(old('to')) ? 'selected' : ''}}>
+                                    {{$city->name}}
+                                </option>
+                            @endforeach
+                        </select>
                         @error('to')
                         <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
