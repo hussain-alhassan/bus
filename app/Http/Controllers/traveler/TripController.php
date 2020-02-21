@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\traveler;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FindTripsRequest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -15,17 +16,8 @@ class TripController extends Controller
      * @return mixed
      * @throws \Exception
      */
-    public function search(Request $request)
+    public function search(FindTripsRequest $request)
     {
-        // will improve the validation later
-        $request->validate([
-            'from' => 'required',
-            'to' => 'required',
-            'depart' => 'required|date_format:Y-m-d',
-            'return' => 'nullable|date_format:Y-m-d',
-            'seats' => 'required|min:1|max:2',
-        ]);
-
         $departDate = clone new Carbon($request->query('depart'));
 
         // need to work on the return trip more
