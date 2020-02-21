@@ -13,31 +13,32 @@
 
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/about', 'HomeController@about');
+Route::get('/about', 'HomeController@about')->name('aboutus');
 Route::get('/trips/search', 'traveler\TripController@search')->name('my_trip');
+Auth::routes();
 
 Route::group(['middleware'=>'auth'],function () {
     Route::get('/trips', 'traveler\TripController@show');
 });
-
-Auth::routes();
-
+//
+//
 /*///////////// Traveler Section //////////////*/
 
 Route::group(['middleware' => 'traveler'], function() {
-    Route::resource('/', 'traveler\TravelerController');
+    Route::resource('/travel', 'traveler\TravelerController');
+//    Route::get('/trips', 'traveler\TripController@show');
 });
-/////////// End of Traveler section //////////////
-
+/////// End of Traveler section //////////////
+//
 /*///////////// Agent Section //////////////*/
 
 Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     Route::resource('dashboard', 'agent\AgentController');
 });
 /////////// End of Agent section //////////////
-
-
-
+//
+//
+//
 /*///////////// Admin Section //////////////*/
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
