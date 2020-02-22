@@ -12,22 +12,24 @@
 */
 
 
-Route::get('/home', 'HomeController@index');
-Route::get('/about', 'HomeController@about');
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@about')->name('about_us');
+
 Route::get('/trips/search', 'traveler\TripController@search')->name('my_trip');
+Auth::routes();
 
 Route::group(['middleware'=>'auth'],function () {
     Route::get('/trips', 'traveler\TripController@show');
 });
 
-Auth::routes();
-
 /*///////////// Traveler Section //////////////*/
 
 Route::group(['middleware' => 'traveler'], function() {
-    Route::resource('/', 'traveler\TravelerController');
+    Route::resource('/travel', 'traveler\TravelerController');
 });
-/////////// End of Traveler section //////////////
+/////// End of Traveler section //////////////
+
 
 /*///////////// Agent Section //////////////*/
 
@@ -36,12 +38,11 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
 });
 /////////// End of Agent section //////////////
 
-
 /*///////////// Admin Section //////////////*/
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::resource('dashboard', 'admin\AdminController');
-    Route::get('cities', 'admin\CityController@showCities');
+    Route::get('cities', 'admin\CityController@showCities')->name('cities');
     Route::get('city/create', 'admin\CityController@create');
     Route::post('city/store', 'admin\CityController@store');
     Route::get('city/{city}/edit', 'admin\CityController@edit');

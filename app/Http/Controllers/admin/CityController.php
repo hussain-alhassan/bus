@@ -33,6 +33,7 @@ class CityController extends Controller
             City::create($data);
 
         } catch(\Exception $e) {
+
             return redirect()->back()->withErrors($e);
         }
 
@@ -77,8 +78,8 @@ class CityController extends Controller
     public function validateRequest( )
     {
         return request()->validate([
-            'name' => 'required|max:25',
-            'name_en' => 'required|max:25',
+            'name' => 'required|max:25|unique:cities',
+            'name_en' => 'required|max:25|unique:cities',
             'is_active' => 'max:2|nullable',
         ]);
     }

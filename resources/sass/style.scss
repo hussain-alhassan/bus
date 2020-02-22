@@ -1184,7 +1184,8 @@ header .form-inline {
 .content {
   float: left;
   padding: 1.875em;
-  width: 100%; }
+  width: 100%;
+  min-height: 82.1vh;}
 
 .card {
   margin-bottom: 1.875em;
@@ -2489,3 +2490,6 @@ footer.site-footer {
   #cellPaiChart #pieLabel0 {
     left: inherit !important;
     right: 20px !important; }
+
+.full {
+  margin-left: 0; }
