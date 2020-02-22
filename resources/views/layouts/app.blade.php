@@ -57,10 +57,12 @@
                         <a href="{{ route('home') }}" class="btn btn-info btn-sm" style="border-radius: 0; font-weight: bold; color: #ffffff">Book</a>
                         @if(Auth::check() && ( Auth::user()->role === 'a'))
                             <a href="{{ url('/agent/dashboard') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">Dashboard</a>
+                            <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
                         @elseif(Auth::check() && ( Auth::user()->role === 't'))
                             <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
                         @elseif(Auth::check() && ( Auth::user()->role === 's'))
                             <a href="{{ url('/admin/dashboard') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">Dashboard</a>
+                            <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
                         @endif
                     </div>
                     <div class="user-area dropdown float-right">

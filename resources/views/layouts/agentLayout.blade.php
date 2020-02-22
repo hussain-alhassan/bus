@@ -51,9 +51,6 @@
                 <li style="font-weight: bold">
                     <a href="widgets.html"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
                 </li>
-                <li style="font-weight: bold">
-                    <a href="{{ url('trips') }}"> <i class="menu-icon fa fa-briefcase fa-lg"></i>MY TRIPS </a>
-                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -83,6 +80,7 @@
                 </div>
                 <div style="align-self: center">
                     <a href="{{ route('home') }}" class="btn btn-info btn-sm" style="border-radius: 0; font-weight: bold; color: #ffffff">Book</a>
+                    <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
                 </div>
 
                 <div class="user-area dropdown float-right">
