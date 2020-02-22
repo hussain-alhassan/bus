@@ -50,7 +50,7 @@
                             <a href="{{ route('register') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">Register</a>
                         @endif
                         <a href="{{ route('login') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">Login</a>
-                        <a href="{{ route('aboutus') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">About Us</a>
+                        <a href="{{ route('about_us') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">About Us</a>
                     </div>
                 @else
                     <div style="align-self: center">
@@ -62,7 +62,6 @@
                         @elseif(Auth::check() && ( Auth::user()->role === 's'))
                             <a href="{{ url('/admin/dashboard') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">Dashboard</a>
                         @endif
-                        {{--<a href="{{ route('login') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">Dashboard</a>--}}
                     </div>
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

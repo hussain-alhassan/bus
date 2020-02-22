@@ -14,7 +14,7 @@
 
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/about', 'HomeController@about')->name('aboutus');
+Route::get('/about', 'HomeController@about')->name('about_us');
 
 Route::get('/trips/search', 'traveler\TripController@search')->name('my_trip');
 Auth::routes();
