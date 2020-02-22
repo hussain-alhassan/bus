@@ -29,8 +29,8 @@
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="./"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="{{asset('images/logo2.png')}}" alt="Logo"></a>
+                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="{{ route('home') }}"><img src="{{asset('images/logo2.png')}}" alt="Logo"></a>
             </div>
         </div>
         <div class="top-right">
@@ -54,15 +54,11 @@
                     </div>
                 @else
                     <div style="align-self: center">
-                        <a href="{{ route('home') }}" class="btn btn-info btn-sm" style="border-radius: 0; font-weight: bold; color: #ffffff">Book</a>
+                        <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
                         @if(Auth::check() && ( Auth::user()->role === 'a'))
                             <a href="{{ url('/agent/dashboard') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">Dashboard</a>
-                            <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
-                        @elseif(Auth::check() && ( Auth::user()->role === 't'))
-                            <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
                         @elseif(Auth::check() && ( Auth::user()->role === 's'))
                             <a href="{{ url('/admin/dashboard') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">Dashboard</a>
-                            <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
                         @endif
                     </div>
                     <div class="user-area dropdown float-right">

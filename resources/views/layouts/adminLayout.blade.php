@@ -68,8 +68,8 @@
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="./"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="{{asset('images/logo2.png')}}" alt="Logo"></a>
+                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="{{ route('home') }}"><img src="{{asset('images/logo2.png')}}" alt="Logo"></a>
                 <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
         </div>
@@ -84,11 +84,6 @@
                         </form>
                     </div>
                 </div>
-                <div style="align-self: center">
-                    <a href="{{ route('home') }}" class="btn btn-info btn-sm" style="border-radius: 0; font-weight: bold; color: #ffffff">Book</a>
-                    <a href="{{ url('/trips') }}" style="margin: 0px 10px;font-weight: bold;color: #99abb4;">My Trips</a>
-                </div>
-
                 <div class="user-area dropdown float-right">
                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="user-avatar rounded-circle" src="{{asset('images/admin.jpg')}}" alt="User Avatar">
