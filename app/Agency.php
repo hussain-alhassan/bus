@@ -20,4 +20,9 @@ class Agency extends Model
     {
         return $this->hasMany(Trip::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

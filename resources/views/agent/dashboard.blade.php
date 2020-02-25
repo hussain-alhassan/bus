@@ -1,7 +1,5 @@
 @extends('layouts.agentLayout')
-@section('title')
-    Dashboard
-@stop
+@section('title', 'Dashboard')
 
 @section('content')
     {{--<div>--}}

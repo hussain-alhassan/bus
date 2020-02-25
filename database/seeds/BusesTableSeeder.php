@@ -13,7 +13,7 @@ class BusesTableSeeder extends Seeder
     public function run()
     {
         DB::table('buses')->insert([
-                ['agency_id' => Agency::where('name', 'Rumailah')->get('id')->first()->id,
+                ['agency_id' => Agency::where('name_en', 'Rumailah')->get('id')->first()->id,
                     'licence_plate' => 'ح ط ص ٦٧٩٤', 'bus_number' => '11']
             ]
         );

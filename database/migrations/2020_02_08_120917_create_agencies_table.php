@@ -6,16 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAgenciesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('agencies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
+            $table->string('name_en')->unique();
             $table->string('logo');
             $table->text('description');
             $table->string('hotline')->nullable();
@@ -23,11 +19,6 @@ class CreateAgenciesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('agencies');

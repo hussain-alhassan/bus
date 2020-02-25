@@ -16,7 +16,7 @@ class TripsTableSeeder extends Seeder
     {
         DB::table('trips')->insert([
                 ['trip_number' => 'ABC123',
-                    'agency_id' => Agency::where('name', 'Rumailah')->get('id')->first()->id,
+                    'agency_id' => Agency::where('name_en', 'Rumailah')->get('id')->first()->id,
                     'from_city_id' => City::where('name', 'الأحساء')->get('id')->first()->id,
                     'to_city_id' => City::where('name', 'دبي')->get('id')->first()->id,
                     'depart' => Carbon::tomorrow(),
@@ -29,7 +29,7 @@ class TripsTableSeeder extends Seeder
                     'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
                 ],
                 ['trip_number' => 'XYZ987',
-                    'agency_id' => Agency::where('name', 'Rumailah')->get('id')->first()->id,
+                    'agency_id' => Agency::where('name_en', 'Rumailah')->get('id')->first()->id,
                     'from_city_id' => City::where('name', 'دبي')->get('id')->first()->id,
                     'to_city_id' => City::where('name', 'الأحساء')->get('id')->first()->id,
                     'depart' => new Carbon('next month'),

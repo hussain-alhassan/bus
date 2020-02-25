@@ -35,6 +35,8 @@ Route::group(['middleware' => 'traveler'], function() {
 
 Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     Route::resource('dashboard', 'agent\AgentController');
+    Route::get('/profile', 'agent\AgentController@profile');
+    Route::post('/profile/{agency}/update', 'agent\AgentController@update');
 });
 /////////// End of Agent section //////////////
 
