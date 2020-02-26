@@ -1,4 +1,4 @@
-<form method="POST" action="/agent/profile/{{$agency->id}}/update" novalidate>
+<form method="POST" action="/agent/profile/{{$agency->id}}/update" enctype="multipart/form-data" novalidate>
     @csrf
 
     <div class="form-group row">
@@ -35,9 +35,8 @@
         <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
         <div class="col-md-6">
-            <input class="form-control @error('description') is-invalid @enderror"
-                   name="description" required type="textarea"
-                   value="{{ old('description') ?? $agency->description }}">
+            <textarea name="description" class="form-control @error('description') is-invalid @enderror" required
+            rows="4" cols="50">{{ old('description') ?? $agency->description }}</textarea>
 
             @error('description')
             <span class="invalid-feedback" role="alert">
@@ -48,7 +47,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="hotline" class="col-md-4 col-form-label text-md-right">Hot line</label>
+        <label for="hotline" class="col-md-4 col-form-label text-md-right">Hot Line</label>
 
         <div class="col-md-6">
             <input type="text" class="form-control @error('hotline') is-invalid @enderror" name="hotline"
@@ -62,7 +61,28 @@
         </div>
     </div>
 
+    <div class="form-group row">
+        <label for="hotline" class="col-md-4 col-form-label text-md-right">Logo</label>
 
+        <div class="col-md-6">
+            <img src="{{asset("/storage/images/logos/$agency->logo")}}" alt="Agency logo" height="200" width="280">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="hotline" class="col-md-4 col-form-label text-md-right">Logo</label>
+
+        <div class="col-md-6">
+            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo"
+                   required autofocus>
+
+            @error('logo')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div>
 
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">

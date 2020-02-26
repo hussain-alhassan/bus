@@ -14,7 +14,7 @@ class StoreAgencyRequest extends FormRequest
     {
         $agencyID = auth()->user()->agencies()->first()->id;
 
-        if($this->route('agency') === $agencyID) return true;
+        if(intval($this->route('agency')) === $agencyID) return true;
 
         return false;
     }
@@ -28,7 +28,7 @@ class StoreAgencyRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'name_en' => 'required|max:50',
-            'logo' => 'required',
+            'logo' => 'nullable|image|max:2048',
             'description' => 'required|string',
             'hotline' => 'max:20|nullable',
         ];

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\agent;
 use App\Agency;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAgencyRequest;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class AgentController extends Controller
 {
@@ -31,21 +31,28 @@ class AgentController extends Controller
      * @param StoreAgencyRequest $agency
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(StoreAgencyRequest $agency)
+    public function update(StoreAgencyRequest $agency, $id)
     {
-        dd($agency);
-//        $agency = auth()->user()->agencies()->first();
+        $agencyModel = Agency::findOrFail($id);
 
+        if($agency->hasFile('logo')) {
+            $extension = $agency->file('logo')->getClientOriginalExtension();
+            $agencyID = auth()->user()->agencies()->first()->id;
+            $fileName = sprintf('agency_%s_%s.%s', $agencyID, now()->timestamp, $extension);
 
+            $agency->file('logo')->storeAs('public/images/logos', $fileName);
+        }
 
-//        try {
-////            $agency->update($data);
-//
-//        } catch(\Exception $e) {
-//            return redirect()->back()->withErrors($e);
-//        }
+        try {
+            $data = collect($agency->request)->only(['name', 'name_en', 'description', 'hotline'])->toArray();
+            if(!empty($fileName)) $data = Arr::add($data, 'logo', $fileName);
 
-        return redirect('/admin/cities')->with('success', 'City has been updated successfully.');
+            $agencyModel->update($data);
+        } catch(\Exception $e) {
+            return redirect()->back()->withErrors($e);
+        }
+
+        return redirect('/agent/profile')->with('success', 'Profile has been updated successfully.');
     }
 
     /**

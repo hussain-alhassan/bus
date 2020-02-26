@@ -17,10 +17,17 @@
                     </div>
                 @endif
 
+                {{-- show success message --}}
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div class="card">
                     <div class="card-header">Edit Profile</div>
                     <div class="card-body">
-                        @include('admin.partials.profile-form')
+                        @include('agent.profile-form')
                     </div>
                 </div>
             </div>
