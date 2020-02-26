@@ -16,12 +16,12 @@
                 <div class="card-body">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Start Date</label>
-                            <input type="email" class="form-control" id="inputStart">
+                            <label for="min">Start Date</label>
+                            <input  type="text" name="min" id="min" class="form-control" value="{{ old('min') }}">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">End Date</label>
-                            <input type="password" class="form-control" id="inputEnd">
+                            <label for="max">End Date</label>
+                            <input type="text" name="max" id="max" class="form-control" value="{{ old('max') }}">
                         </div>
                     </div>
 
@@ -49,6 +49,8 @@
                             <th scope="col">First</th>
                             <th scope="col">Last</th>
                             <th scope="col">Handle</th>
+                            <th scope="col">Start</th>
+                            <th scope="col">End</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,24 +59,32 @@
                             <td>Mark</td>
                             <td>Otto</td>
                             <td>@mdo</td>
+                            <td>10/2/2019</td>
+                            <td>15/2/2019</td>
                         </tr>
                         <tr>
                             <td scope="row">2</td>
                             <td>Jacob</td>
                             <td>Thornton</td>
                             <td>@fat</td>
+                            <td>1/8/2019</td>
+                            <td>15/9/2019</td>
                         </tr>
                         <tr>
                             <td scope="row">2</td>
                             <td>Jacob</td>
                             <td>Thornton</td>
                             <td>@fat</td>
+                            <td>30/9/2019</td>
+                            <td>12/11/2019</td>
                         </tr>
                         <tr>
                             <td scope="row">2</td>
                             <td>Jacob</td>
                             <td>Thornton</td>
                             <td>@fat</td>
+                            <td>8/1/2020</td>
+                            <td>13/2/2020</td>
                         </tr>
                         </tbody>
                     </table>
@@ -88,9 +98,46 @@
 @section('scripts')
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
     <script>
         jQuery(document).ready(function($) {
-            $('#booking').DataTable();
+            $('#booking').DataTable({
+                "dom": 'Bfrtip',
+                "buttons": [
+                    'copy', 'excel', 'pdf', 'print'
+            ]
+            });
+
+            $.fn.dataTable.ext.search.push(
+                function (settings, data, dataIndex) {
+                    var min = $('#min').datepicker("getDate");
+                    var max = $('#max').datepicker("getDate");
+                    var startDate = new Date(data[4]);
+
+                    if (min == null && max == null) { return true; }
+                    if (min == null && startDate <= max) { return true;}
+                    if(max == null && startDate >= min) {return true;}
+                    if (startDate <= max && startDate >= min) { return true; }
+                    return false;
+                }
+            );
+
+
+            $("#min").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true, format: 'dd/mm/yyyy', autoclose: true });
+            $("#max").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true, format: 'dd/mm/yyyy', autocolse: true });
+            var table = $('#booking').DataTable();
+
+            $('#min, #max').change(function () {
+                table.draw();
+            });
         });
+
+
     </script>
 @stop
