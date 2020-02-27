@@ -3,7 +3,6 @@
     Booking
 @stop
 @section('styles')
-    {{--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">--}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 @stop
 
@@ -25,22 +24,6 @@
                         </div>
                     </div>
 
-                    {{--<div class="row">--}}
-                        {{--<div class="form-group" >--}}
-                            {{--<label class="control-label col-md-6 col-sm-6 col-xs-12" for="min">Start Date--}}
-                            {{--</label>--}}
-                            {{--<div class="col-md-6 col-sm-6 col-xs-12">--}}
-                                {{--<input  type="text" name="min" id="min" class="form-control col-md-7 col-xs-12" value="{{ old('min') }}">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="max">End Date--}}
-                            {{--</label>--}}
-                            {{--<div class="col-md-9 col-sm-9 col-xs-12">--}}
-                                {{--<input type="text" name="max" id="max" class="form-control col-md-7 col-xs-12" value="{{ old('max') }}">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                     <div class="table-responsive">
                         <table id="booking" style="border-bottom: 0px; border-spacing: 0 15px; border-collapse: separate;" class="table dt-responsive">
                         <thead>
