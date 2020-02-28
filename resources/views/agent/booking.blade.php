@@ -1,7 +1,5 @@
 @extends('layouts.agentLayout')
-@section('title')
-    Booking
-@stop
+@section('title', 'Bookings')
 @section('styles')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 @stop
