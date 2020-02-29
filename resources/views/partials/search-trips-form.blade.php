@@ -16,10 +16,10 @@
         <form method="GET" action="/trips/search" novalidate>
             <div class="container">
                 <div class="form-group row">
-                    <div class="col-md-2">
+                    <div class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">From</label>
                         <select class="form-control" name="from">
-                        @foreach($cities as $city)
+                            @foreach($cities as $city)
                                 <option value="{{$city->id}}" {{$city->id === intval(old('from')) ? 'selected' : ''}}>
                                     {{$city->name}}
                                 </option>
@@ -32,7 +32,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">To</label>
                         <select class="form-control" name="to">
                             @foreach($cities as $city)
@@ -48,7 +48,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">Depart</label>
 
                         <input type="date" class="form-control @error('depart') is-invalid @enderror"
@@ -60,7 +60,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">Return</label>
                         <input type="date" class="form-control @error('return') is-invalid @enderror"
                                name="return" value="{{ Request::get('return') }}" required autocomplete="return">
@@ -72,7 +72,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">Seats</label>
                         <select name="seats" class="browser-default custom-select">
                             @for($i = 1; $i <= 10; $i++)
@@ -81,12 +81,13 @@
                         </select>
                     </div>
 
-                    <div class="col-md-2 mt-auto">
+                    <div class="mt-auto flex-fill">
                         <div>
                             <button type="submit" class="btn btn-primary">Find Trips</button>
                         </div>
                     </div>
                 </div>
+
             </div>
         </form>
     </div>
