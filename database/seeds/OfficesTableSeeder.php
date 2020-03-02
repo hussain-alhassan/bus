@@ -14,7 +14,7 @@ class OfficesTableSeeder extends Seeder
     public function run()
     {
         DB::table('offices')->insert([
-                ['agency_id' => Agency::where('name', 'Rumailah')->get('id')->first()->id,
+                ['agency_id' => Agency::where('name_en', 'Rumailah')->get('id')->first()->id,
                     'name' => 'Rumailah Ahsa Office', 'address' => 'Rumailah downtown',
                     'location_link' => 'https://goo.gl/maps/PmnMyXBandzx9Diz5', 'hours' => '4-9 Every day',
                     'phone' => '013-596-2166', 'is_main_branch' => true,

@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title')</title>
+    <title>@yield('title', 'Agency')</title>
 
     <meta name="description" content="Bus Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,24 +34,28 @@
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li style="font-weight: bold" class="active">
+                <li class="font-weight-bold active">
                     <a href="{{ url('/agent/dashboard') }}"><i class="menu-icon fa fa-laptop fa-lg"></i>DASHBOARD </a>
                 </li>
-
-                <li style="font-weight: bold">
+                <li class="font-weight-bold">
                     <a href="widgets.html"> <i class="menu-icon fa fa-user fa-lg"></i>ADD TRAVELER </a>
                 </li>
-                <li style="font-weight: bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>
+                <li class="font-weight-bold">
+                    <a href="widgets.html"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
                 </li>
-                <li style="font-weight: bold">
+                <li class="font-weight-bold">
                     <a href="widgets.html"> <i class="menu-icon fa fa-suitcase fa-lg"></i>TRIPS </a>
                 </li>
-                <li style="font-weight: bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-building fa-lg"></i>OFFICES </a>
+                <li class="font-weight-bold">
+                    <a href="{{ url('/agent/profile') }}"> <i class="menu-icon fa fa-suitcase fa-lg"></i>PROFILE </a>
                 </li>
                 <li style="font-weight: bold">
                     <a href="{{ route('bookings.index') }}"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
+                <li class="font-weight-bold">
+                    <a href="widgets.html"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>
+                </li>
+                <li class="font-weight-bold">
+                    <a href="widgets.html"> <i class="menu-icon fa fa-building fa-lg"></i>OFFICES </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
