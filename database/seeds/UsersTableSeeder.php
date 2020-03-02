@@ -23,11 +23,15 @@ class UsersTableSeeder extends Seeder
                 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
             ],
             ['name' => 'Abu aqeel', 'email' => 'abu_aqeel@rumailah.com',
-                'password' => '$2y$10$XQmmjTzkVZJ6xQzDviNmpOtIoIq0NuTSzN30oQ1jFSjH1B6O203ty', 'role' => 'a',
+                'password' => '$2y$10$BBuwaLSRytbBtLLTXFoDqeNGhWrMuqWcUxjqSwZlsbH9nO4HGMdIq', 'role' => 'a',
                 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(),
             ],
-            ['name' => 'Ahmad', 'email' => 'ahmad@traveler.com',
-                'password' => '$2y$10$XQmmjTzkVZJ6xQzDviNmpOtIoIq0NuTSzN30oQ1jFSjH1B6O203ty', 'role' => 't',
+            ['name' => 'Abu Ali', 'email' => 'abu_ali@al-esraa.com',
+                'password' => '$2y$10$BBuwaLSRytbBtLLTXFoDqeNGhWrMuqWcUxjqSwZlsbH9nO4HGMdIq', 'role' => 'a',
+                'created_at' => Carbon::now(), 'updated_at' => Carbon::now(),
+            ],
+            ['name' => 'Ali Sager', 'email' => 'ali_sager@al-esraa.com',
+                'password' => '$2y$10$BBuwaLSRytbBtLLTXFoDqeNGhWrMuqWcUxjqSwZlsbH9nO4HGMdIq', 'role' => 'a',
                 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(),
             ],
         ]

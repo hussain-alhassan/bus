@@ -1,8 +1,9 @@
-@extends('layouts.adminLayout')
-@section('title', 'City Management')
+@extends('layouts.agentLayout')
+@section('title', 'Profile')
+
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-12">
 
                 {{-- show validation errors if there is any --}}
@@ -24,13 +25,27 @@
                 @endif
 
                 <div class="card">
-                    <div class="card-header">City Management</div>
+                    <div class="card-header">Edit Profile</div>
                     <div class="card-body">
-                        <a href="/admin/city/create" class="btn btn-success">Add City</a>
-                        @include('admin.partials.cities-list')
+                        @include('agent.profile-form')
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@stack('scripts')
+    <script>
+        function validateLogo() {
+            var maxSize = 2048;
+            var fileUpload = document.getElementById("logo");
+            if (typeof (fileUpload.files) != "undefined") {
+                var size = parseFloat(fileUpload.files[0].size / 1024).toFixed(0);
+                if (size > maxSize) {
+                    alert('The logo may not be greater than ' + (maxSize/1024) + ' MB.');
+                    fileUpload.value = '';
+                }
+            }
+        }
+    </script>
