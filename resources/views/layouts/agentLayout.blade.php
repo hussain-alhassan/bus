@@ -49,16 +49,13 @@
                 <li class="font-weight-bold">
                     <a href="{{ url('/agent/profile') }}"> <i class="menu-icon fa fa-suitcase fa-lg"></i>PROFILE </a>
                 </li>
-<<<<<<< HEAD
                 <li style="font-weight: bold">
                     <a href="{{ route('bookings.index') }}"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
-=======
                 <li class="font-weight-bold">
                     <a href="widgets.html"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>
                 </li>
                 <li class="font-weight-bold">
                     <a href="widgets.html"> <i class="menu-icon fa fa-building fa-lg"></i>OFFICES </a>
->>>>>>> master
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
