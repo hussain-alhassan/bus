@@ -50,7 +50,7 @@
 
         <div class="col-md-6">
             <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo"
-                   onchange="validateLogo()" required autofocus accept="image/*">
+                   onchange="validateLogo()" autofocus accept="image/*">
         </div>
     </div>
 
