@@ -33,7 +33,7 @@
 
         <div class="col-md-6">
             <input type="text" class="form-control @error('hotline') is-invalid @enderror" name="hotline"
-                   value="{{ old('hotline') ?? $agency->hotline }}" required autocomplete="hotline" autofocus>
+                   value="{{ old('hotline') ?? $agency->hotline }}" autocomplete="hotline" autofocus>
         </div>
     </div>
 
