@@ -1,4 +1,4 @@
-<form method="POST" action="/agent/profile/{{$agency->id}}/update" enctype="multipart/form-data" novalidate>
+<form method="POST" action="/agent/profile/{{$agency->id}}/update" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group row">
@@ -50,9 +50,7 @@
 
         <div class="col-md-6">
             <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo"
-                   onchange="validateLogo()"
-                   required autofocus >
-{{--        add accept=""    --}}
+                   onchange="validateLogo()" required autofocus accept="image/*">
         </div>
     </div>
 
