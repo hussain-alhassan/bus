@@ -13,8 +13,16 @@ class AgenciesTableSeeder extends Seeder
     public function run()
     {
         DB::table('agencies')->insert([
-                ['name' => 'Rumailah', 'logo' => 'rumailah.png', 'description' => 'This is a description',
-                    'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
+                [
+                    'name' => 'حملة الرميلة', 'name_en' => 'Rumailah', 'logo' => 'agency_1_1582741517.jpeg',
+                    'description' => 'This is a description for Rumailah agency',
+                    'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'حملة الإسراء', 'name_en' => 'Al Esraa', 'logo' => 'agency_2_1582741278.jpg',
+                    'description' => 'This is a description Al Esraa agency',
+                    'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
+                ]
             ]
         );
     }
