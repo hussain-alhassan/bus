@@ -34,3 +34,15 @@
         </div>
     </div>
 @endsection
+
+@stack('scripts')
+    <script>
+        function validateLogo() {
+            var maxSize = 2048;
+            var fileUpload = document.getElementById("logo");
+            if (typeof (fileUpload.files) != "undefined") {
+                var size = parseFloat(fileUpload.files[0].size / 1024).toFixed(0);
+                if (size > maxSize) alert('The logo may not be greater than ' + (maxSize/1024) + ' MB.');
+            }
+        }
+    </script>

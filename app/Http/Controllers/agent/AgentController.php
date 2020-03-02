@@ -35,17 +35,22 @@ class AgentController extends Controller
     {
         $agencyModel = Agency::findOrFail($id);
 
-        if($agency->hasFile('logo')) {
-            $extension = $agency->file('logo')->getClientOriginalExtension();
-            $agencyID = auth()->user()->agencies()->first()->id;
-            $fileName = sprintf('agency_%s_%s.%s', $agencyID, now()->timestamp, $extension);
-
-            $agency->file('logo')->storeAs('public/images/logos', $fileName);
-        }
-
         try {
+            if($agency->hasFile('logo')) {
+                $extension = $agency->file('logo')->getClientOriginalExtension();
+                $agencyID = auth()->user()->agencies()->first()->id;
+                $fileName = sprintf('agency_%s_%s.%s', $agencyID, now()->timestamp, $extension);
+
+                // store new logo
+                $agency->file('logo')->storeAs('public/images/logos', $fileName);
+
+                // delete previous logo from storage
+                $previousLogo = $agencyModel->logo;
+                @unlink(storage_path() . "/app/public/images/logos/$previousLogo");
+            }
+
             $data = collect($agency->request)->only(['name', 'name_en', 'description', 'hotline'])->toArray();
-            if(!empty($fileName)) $data = Arr::add($data, 'logo', $fileName);
+            if(!empty($fileName)) $data = Arr::add($data, 'logo', $fileName); // add logo 'name' to the DB
 
             $agencyModel->update($data);
         } catch(\Exception $e) {

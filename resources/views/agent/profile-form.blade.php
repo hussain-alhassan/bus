@@ -7,12 +7,6 @@
         <div class="col-md-6">
             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                    value="{{ old('name') ?? $agency->name }}" required autocomplete="name" autofocus>
-
-            @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
     </div>
 
@@ -22,12 +16,6 @@
         <div class="col-md-6">
             <input type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en"
                    value="{{ old('name_en') ?? $agency->name_en }}" required autocomplete="name_en" autofocus>
-
-            @error('name_en')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
     </div>
 
@@ -37,12 +25,6 @@
         <div class="col-md-6">
             <textarea name="description" class="form-control @error('description') is-invalid @enderror" required
             rows="4" cols="50">{{ old('description') ?? $agency->description }}</textarea>
-
-            @error('description')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
     </div>
 
@@ -52,12 +34,6 @@
         <div class="col-md-6">
             <input type="text" class="form-control @error('hotline') is-invalid @enderror" name="hotline"
                    value="{{ old('hotline') ?? $agency->hotline }}" required autocomplete="hotline" autofocus>
-
-            @error('hotline')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
     </div>
 
@@ -73,22 +49,16 @@
         <label for="hotline" class="col-md-4 col-form-label text-md-right">Logo</label>
 
         <div class="col-md-6">
-            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo"
-                   required autofocus>
-
-            @error('logo')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" id="logo"
+                   onchange="validateLogo()"
+                   required autofocus >
+{{--        add accept=""    --}}
         </div>
     </div>
 
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary">
-                Update
-            </button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </div>
     </div>
 </form>

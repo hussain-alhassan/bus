@@ -28,7 +28,7 @@ class StoreAgencyRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'name_en' => 'required|max:50',
-            'logo' => 'nullable|image|max:2048',
+            'logo' => 'bail|image|nullable|max:2048',
             'description' => 'required|string',
             'hotline' => 'max:20|nullable',
         ];
