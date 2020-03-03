@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+    @yield('styles')
+
 </head>
 
 <body>
@@ -39,7 +41,7 @@
                     <a href="widgets.html"> <i class="menu-icon fa fa-user fa-lg"></i>ADD TRAVELER </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
+                    <a href="{{ route('bookings.index') }}"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
                 </li>
                 <li class="font-weight-bold">
                     <a href="widgets.html"> <i class="menu-icon fa fa-suitcase fa-lg"></i>TRIPS </a>

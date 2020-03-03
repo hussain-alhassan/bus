@@ -81,8 +81,5 @@ jQuery(document).ready(function($) {
 		} else {
 			$('body').removeClass('small-device');
 		}
-
 	});
-  
- 
 });
