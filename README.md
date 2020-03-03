@@ -27,3 +27,7 @@
 * Run `php artisan key:generate`
 
 Congrats. The project should be up and running now!
+
+## Agent Profile Management:
+If you do not see the logos of the agents, please follow the instructions in the description of this PR
+https://github.com/hussain-alhassan/bus/pull/15
