@@ -14,11 +14,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="min">Start Date</label>
-                            <input  type="text" name="min" id="min" class="form-control" value="{{ old('min') }}">
+                            <input  type="date" name="min" id="min" class="form-control" value="{{ old('min') }}">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="max">End Date</label>
-                            <input type="text" name="max" id="max" class="form-control" value="{{ old('max') }}">
+                            <input type="date" name="max" id="max" class="form-control" value="{{ old('max') }}">
                         </div>
                     </div>
 
@@ -79,7 +79,6 @@
 @section('scripts')
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
@@ -91,15 +90,22 @@
             $('#booking').DataTable({
                 "dom": 'Bfrtip',
                 "buttons": [
-                    'copy', 'excel', 'pdf', 'print'
+                    'excel', 'pdf', 'print'
             ]
             });
 
             $.fn.dataTable.ext.search.push(
                 function (settings, data, dataIndex) {
-                    var min = $('#min').datepicker("getDate");
-                    var max = $('#max').datepicker("getDate");
-                    var startDate = new Date(data[4]);
+                    if ($('#min').val()) {
+                        var min = new Date($('#min').val());
+                        min.setHours(0,0,0,0);
+                    }
+                    if ($('#max').val()) {
+                        var max = new Date($('#max').val());
+                        max.setHours(0,0,0,0);
+                    }
+                    var parts = data[4].split('/');
+                    var startDate = new Date(parts[1]+'/'+parts[0]+'/'+parts[2]);
 
                     if (min == null && max == null) { return true; }
                     if (min == null && startDate <= max) { return true;}
@@ -108,10 +114,6 @@
                     return false;
                 }
             );
-
-
-            $("#min").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true, format: 'dd/mm/yyyy', autoclose: true });
-            $("#max").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true, format: 'dd/mm/yyyy', autocolse: true });
             var table = $('#booking').DataTable();
 
             $('#min, #max').change(function () {
