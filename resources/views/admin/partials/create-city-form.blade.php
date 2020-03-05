@@ -7,12 +7,6 @@
         <div class="col-md-6">
             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                    value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-            @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
     </div>
 
@@ -22,12 +16,6 @@
         <div class="col-md-6">
             <input id="name_en" type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en"
                    value="{{ old('name_en') }}" required autocomplete="name_en" autofocus>
-
-            @error('name_en')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
         </div>
     </div>
 

@@ -13,7 +13,8 @@
 
     <div class="card-header">Find Trips</div>
     <div class="card-body">
-        <form method="GET" action="/trips/search" novalidate>
+        <form method="GET" action="/trips/search">
+
             <div class="container">
                 <div class="form-group row">
                     <div class="mr-3 flex-fill">
@@ -25,11 +26,6 @@
                                 </option>
                             @endforeach
                         </select>
-                        @error('from')
-                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                        @enderror
                     </div>
 
                     <div class="mr-3 flex-fill">
@@ -41,11 +37,6 @@
                                 </option>
                             @endforeach
                         </select>
-                        @error('to')
-                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                        @enderror
                     </div>
 
                     <div class="mr-3 flex-fill">
@@ -53,28 +44,17 @@
 
                         <input type="date" class="form-control @error('depart') is-invalid @enderror"
                                name="depart" value="{{ old('depart') ?? Request::get('depart') }}" required autocomplete="depart">
-                        @error('depart')
-                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                        @enderror
                     </div>
 
                     <div class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">Return</label>
                         <input type="date" class="form-control @error('return') is-invalid @enderror"
-                               name="return" value="{{ Request::get('return') }}" required autocomplete="return">
-
-                        @error('depart')
-                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                        @enderror
+                               name="return" value="{{ Request::get('return') }}" autocomplete="return">
                     </div>
 
                     <div class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">Seats</label>
-                        <select name="seats" class="browser-default custom-select">
+                        <select name="seats" class="browser-default custom-select @error('seats') is-invalid @enderror">
                             @for($i = 1; $i <= 10; $i++)
                                 <option value="{{$i}}" {{ Request::get('seats') == $i ? 'selected' : ''}}>{{$i}}</option>
                             @endfor
@@ -87,8 +67,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </form>
     </div>
 </div>

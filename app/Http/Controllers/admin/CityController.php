@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 class CityController extends Controller
 {
     /**
-     * Display a listing of the cities.
+     * Display a list of the cities.
      */
     public function showCities()
     {
@@ -47,7 +47,7 @@ class CityController extends Controller
 
     public function update(City $city)
     {
-        $data = $this->validateRequest();
+        $data = $this->validateRequest($city);
         $data['is_active'] = isset($data['is_active']) ? 1 : 0;
 
         try {
@@ -75,11 +75,12 @@ class CityController extends Controller
     /**
      * validate request data before create and update
      */
-    public function validateRequest( )
+    public function validateRequest($city = [])
     {
+        $cityID = isset($city->id) ? $city->id : '';
         return request()->validate([
-            'name' => 'required|max:25|unique:cities',
-            'name_en' => 'required|max:25|unique:cities',
+            'name' => 'required|max:25|unique:cities,name,' . $cityID,
+            'name_en' => 'required|max:25|unique:cities,name_en,' . $cityID,
             'is_active' => 'max:2|nullable',
         ]);
     }
