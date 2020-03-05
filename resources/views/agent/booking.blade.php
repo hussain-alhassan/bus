@@ -90,9 +90,16 @@
             $('#booking').DataTable({
                 "dom": 'Bfrtip',
                 "buttons": [
-                    'excel', 'pdf', 'print'
-            ]
+                    { extend: 'excel', filename: dateNow() },
+                    { extend: 'pdf', filename: dateNow() },
+                    'print'
+                ]
             });
+
+            function dateNow() {
+                var now = new Date();
+                return 'Bookings ' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear();
+            }
 
             $.fn.dataTable.ext.search.push(
                 function (settings, data, dataIndex) {
