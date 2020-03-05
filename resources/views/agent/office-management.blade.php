@@ -1,10 +1,10 @@
-@extends('layouts.adminLayout')
-@section('title', 'Create City')
+@extends('layouts.agentLayout')
+@section('title', 'Offices Management')
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-12">
 
                 {{-- show validation errors if there is any --}}
                 @if ($errors->any())
@@ -17,11 +17,18 @@
                     </div>
                 @endif
 
+                {{-- show success message --}}
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div class="card">
-                    <div class="card-header">Create City</div>
+                    <div class="card-header">Offices Management</div>
                     <div class="card-body">
-                        <a href="/admin/cities" class="btn btn-success">Back to Cities</a>
-                        @include('admin.partials.create-city-form')
+                        <a href="/agent/office/create" class="btn btn-success">Add Office</a>
+                        @include('agent.partials.offices-list')
                     </div>
                 </div>
             </div>

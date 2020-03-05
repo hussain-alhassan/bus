@@ -38,6 +38,14 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     Route::resource('bookings', 'agent\BookingController');
     Route::get('/profile', 'agent\AgentController@profile');
     Route::post('/profile/{agency}/update', 'agent\AgentController@update');
+
+    Route::get('/offices', 'agent\OfficeController@showOffices');
+    Route::get('/office/create', 'agent\OfficeController@create');
+    Route::post('/office/store', 'agent\OfficeController@store');
+    Route::get('/office/{office}/edit', 'agent\OfficeController@edit');
+    Route::post('/office/{office}/update', 'agent\OfficeController@update');
+    Route::get('/office/{office}/activate', 'agent\OfficeController@activate');
+    Route::get('/office/{office}/disable', 'agent\OfficeController@disable');
 });
 /////////// End of Agent section //////////////
 

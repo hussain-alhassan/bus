@@ -1,5 +1,6 @@
 @extends('layouts.adminLayout')
-@section('title', 'City Management')
+@section('title', 'Cities Management')
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -24,7 +25,7 @@
                 @endif
 
                 <div class="card">
-                    <div class="card-header">City Management</div>
+                    <div class="card-header">Cities Management</div>
                     <div class="card-body">
                         <a href="/admin/city/create" class="btn btn-success">Add City</a>
                         @include('admin.partials.cities-list')

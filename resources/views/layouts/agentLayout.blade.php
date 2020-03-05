@@ -53,7 +53,7 @@
                     <a href="widgets.html"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-building fa-lg"></i>OFFICES </a>
+                    <a href="{{ url('/agent/offices') }}"> <i class="menu-icon fa fa-building fa-lg"></i>OFFICES </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

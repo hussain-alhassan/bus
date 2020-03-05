@@ -25,7 +25,8 @@ class CreateOfficesTable extends Migration
             $table->text('location_link');
             $table->text('hours');
             $table->string('phone');
-            $table->boolean('is_main_branch');
+            $table->boolean('is_main_branch')->default(false);
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }
