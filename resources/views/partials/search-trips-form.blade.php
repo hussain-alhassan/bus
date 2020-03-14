@@ -14,6 +14,7 @@
     <div class="card-header">Find Trips</div>
     <div class="card-body">
         <form method="GET" action="/trips/search">
+            @csrf
 
             <div class="container">
                 <div class="form-group row">

@@ -77,6 +77,22 @@ class OfficeController extends Controller
         return redirect('/agent/offices')->with('success', 'Office has been disabled successfully.');
     }
 
+    public function setMainBranch(Request $request)
+    {
+        // check whether agent owns this office
+        $office = Office::findOrFail($request->office_id);
+        $autAgencyID = auth()->user()->agencies()->first()->id;
+        if($office->agency_id !== $autAgencyID) abort(404);
+
+        // reset 'is_main_branch' to 0 for the other offices
+        Office::where('is_main_branch', 1)->where('agency_id', $autAgencyID)->update(['is_main_branch' => 0]);
+
+        // set the new main branch
+        $office->where('id', $request->office_id )->update(['is_main_branch' => 1]);
+
+        return redirect('/agent/offices')->with('success', 'Main branch has been set up successfully.');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
