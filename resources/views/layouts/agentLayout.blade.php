@@ -28,7 +28,7 @@
 
 </head>
 
-<body>
+<body class="open">
 <!-- Left Panel -->
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
