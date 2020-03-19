@@ -82,4 +82,7 @@ jQuery(document).ready(function($) {
 			$('body').removeClass('small-device');
 		}
 	});
+
+	//tooltips
+    $('[data-toggle="tooltip"]').tooltip();
 });
