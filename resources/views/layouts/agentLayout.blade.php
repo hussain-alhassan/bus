@@ -28,32 +28,32 @@
 
 </head>
 
-<body>
+<body class="open">
 <!-- Left Panel -->
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="font-weight-bold active">
-                    <a href="{{ url('/agent/dashboard') }}"><i class="menu-icon fa fa-laptop fa-lg"></i>DASHBOARD </a>
+                    <a href="{{ url('/agent/dashboard') }}" data-toggle="tooltip" data-placement="right" title="DASHBOARD"><i class="menu-icon fa fa-laptop fa-lg"></i>DASHBOARD </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-user fa-lg"></i>ADD TRAVELER </a>
+                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="ADD TRAVELER"> <i class="menu-icon fa fa-user fa-lg"></i>ADD TRAVELER </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="{{ route('bookings.index') }}"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
+                    <a href="{{ route('bookings.index') }}" data-toggle="tooltip" data-placement="right" title="BOOKINGS"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-suitcase fa-lg"></i>TRIPS </a>
+                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="TRIPS"> <i class="menu-icon fa fa-suitcase fa-lg"></i>TRIPS </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="{{ url('/agent/profile') }}"> <i class="menu-icon fa fa-suitcase fa-lg"></i>PROFILE </a>
+                    <a href="{{ url('/agent/profile') }}" data-toggle="tooltip" data-placement="right" title="PROFILE"> <i class="menu-icon fa fa-suitcase fa-lg"></i>PROFILE </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>
+                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="BUSES"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-building fa-lg"></i>OFFICES </a>
+                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="OFFIECES"> <i class="menu-icon fa fa-building fa-lg"></i>OFFICES </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -68,7 +68,6 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ route('home') }}"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
                 <a class="navbar-brand hidden" href="{{ route('home') }}"><img src="{{asset('images/logo2.png')}}" alt="Logo"></a>
-                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
         </div>
         <div class="top-right">
