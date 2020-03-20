@@ -1,4 +1,4 @@
-<form method="POST" action="/agent/office/main-branch" novalidate>
+<form method="POST" action="{{ route('main_branch') }}">
     @csrf
 
     <div class="container mt-5">

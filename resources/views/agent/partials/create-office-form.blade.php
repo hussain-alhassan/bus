@@ -1,4 +1,4 @@
-<form method="POST" action="/agent/office/store" novalidate>
+<form method="POST" action="{{route('store_office')}}">
     @csrf
 
     <div class="form-group row">

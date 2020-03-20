@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class OfficeController extends Controller
 {
     /**
-     * Display a listing of the cities.
+     * Display a listing of the offices.
      */
     public function showOffices()
     {

@@ -40,18 +40,18 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     Route::post('/profile/{agency}/update', 'agent\AgentController@update');
 
     Route::get('/offices', 'agent\OfficeController@showOffices');
-    Route::get('/office/create', 'agent\OfficeController@create');
-    Route::post('/office/store', 'agent\OfficeController@store');
+    Route::get('/office/create', 'agent\OfficeController@create')->name('create_office');
+    Route::post('/office/store', 'agent\OfficeController@store')->name('store_office');
 
     // office protected routes
     Route::group(['prefix' => 'office', 'middleware' => 'own.office'], function() {
-        Route::get('/{office}/edit', 'agent\OfficeController@edit');
-        Route::post('/{office}/update', 'agent\OfficeController@update');
-        Route::get('/{office}/activate', 'agent\OfficeController@activate');
-        Route::get('/{office}/disable', 'agent\OfficeController@disable');
+        Route::get('/{office}/edit', 'agent\OfficeController@edit')->name('edit_office');
+        Route::post('/{office}/update', 'agent\OfficeController@update')->name('update_office');
+        Route::get('/{office}/activate', 'agent\OfficeController@activate')->name('activate_office');
+        Route::get('/{office}/disable', 'agent\OfficeController@disable')->name('disable_office');
     });
     // check own office is in the same function setMainBranch()
-    Route::post('/office/main-branch', 'agent\OfficeController@setMainBranch');
+    Route::post('/office/main-branch', 'agent\OfficeController@setMainBranch')->name('main_branch');
 
 });
 /////////// End of Agent section //////////////

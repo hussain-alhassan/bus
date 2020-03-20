@@ -1,4 +1,4 @@
-<form method="POST" action="/agent/office/{{$office->id}}/update">
+<form method="POST" action="{{ route('update_office', [$office->id])}}">
     @csrf
 
     <div class="form-group row">

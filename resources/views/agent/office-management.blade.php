@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-header">Offices Management</div>
                     <div class="card-body">
-                        <a href="/agent/office/create" class="btn btn-success">Add Office</a>
+                        <a href="{{route('create_office')}}" class="btn btn-success">Add Office</a>
                         @include('agent.partials.main-branch-form')
                         @include('agent.partials.offices-list')
                     </div>

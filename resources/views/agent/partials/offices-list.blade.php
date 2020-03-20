@@ -25,12 +25,12 @@
                                 <td>{{$office->address}}</td>
                                 <td>{{$office->phone}}</td>
                                 <td>
-                                    <a href="/agent/office/{{$office->id}}/edit/" class="btn btn-primary">Edit</a>
+                                    <a href="{{ route('edit_office', [$office->id])}}" class="btn btn-primary">Edit</a>
                                     @if($office->is_active === 1)
-                                        <a href="/agent/office/{{$office->id}}/disable" class="btn btn-danger"
+                                        <a href="{{ route('disable_office', [$office->id])}}" class="btn btn-danger"
                                         onclick="return confirm(`Are you sure you want to disable '{{$office->name}}' ?`)">Disable</a>
                                     @else
-                                        <a href="/agent/office/{{$office->id}}/activate" class="btn btn-success"
+                                        <a href="{{ route('activate_office', [$office->id])}}" class="btn btn-success"
                                            onclick="return confirm(`Are you sure you want to activate '{{$office->name}}' ?`)">Activate</a>
                                     @endif
                                 </td>

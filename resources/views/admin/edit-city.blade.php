@@ -1,5 +1,5 @@
 @extends('layouts.adminLayout')
-@section('title', 'Edit Office')
+@section('title', 'Edit City')
 
 @section('content')
     <div class="container">
