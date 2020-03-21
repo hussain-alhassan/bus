@@ -39,7 +39,7 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     Route::get('/profile', 'agent\AgentController@profile');
     Route::post('/profile/{agency}/update', 'agent\AgentController@update');
 
-    Route::get('/offices', 'agent\OfficeController@showOffices');
+    Route::get('/offices', 'agent\OfficeController@showOffices')->name('show_offices');
     Route::get('/office/create', 'agent\OfficeController@create')->name('create_office');
     Route::post('/office/store', 'agent\OfficeController@store')->name('store_office');
 
@@ -53,6 +53,9 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     // check own office is in the same function setMainBranch()
     Route::post('/office/main-branch', 'agent\OfficeController@setMainBranch')->name('main_branch');
 
+    Route::get('/buses', 'agent\BusController@showBuses')->name('show_buses');
+    Route::get('/bus/create', 'agent\BusController@create')->name('create_bus');
+    Route::post('/bus/store', 'agent\BusController@store')->name('store_bus');
 });
 /////////// End of Agent section //////////////
 
