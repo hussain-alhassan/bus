@@ -1,5 +1,5 @@
-@extends('layouts.adminLayout')
-@section('title', 'Cities Management')
+@extends('layouts.agentLayout')
+@section('title', 'Offices Management')
 
 @section('content')
     <div class="container">
@@ -25,10 +25,11 @@
                 @endif
 
                 <div class="card">
-                    <div class="card-header">Cities Management</div>
+                    <div class="card-header">Offices Management</div>
                     <div class="card-body">
-                        <a href="/admin/city/create" class="btn btn-success">Add City</a>
-                        @include('admin.partials.cities-list')
+                        <a href="{{route('create_office')}}" class="btn btn-success">Add Office</a>
+                        @include('agent.partials.main-branch-form')
+                        @include('agent.partials.offices-list')
                     </div>
                 </div>
             </div>

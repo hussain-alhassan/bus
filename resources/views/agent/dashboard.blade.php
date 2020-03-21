@@ -67,7 +67,7 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                     <div class="stat-text"><span class="count">349</span></div>
-                                    <div class="stat-heading">Offieces</div>
+                                    <div class="stat-heading">Offices</div>
                                 </div>
                             </div>
                         </div>

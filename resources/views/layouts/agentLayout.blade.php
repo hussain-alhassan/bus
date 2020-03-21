@@ -53,7 +53,10 @@
                     <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="BUSES"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="OFFIECES"> <i class="menu-icon fa fa-building fa-lg"></i>OFFICES </a>
+                    <a href="{{ url('/agent/offices') }}" data-toggle="tooltip" data-placement="right" title="OFFIECES">
+                        <i class="menu-icon fa fa-building fa-lg"></i>
+                        OFFICES
+                    </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

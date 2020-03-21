@@ -17,7 +17,7 @@ class OfficesTableSeeder extends Seeder
                 ['agency_id' => Agency::where('name_en', 'Rumailah')->get('id')->first()->id,
                     'name' => 'Rumailah Ahsa Office', 'address' => 'Rumailah downtown',
                     'location_link' => 'https://goo.gl/maps/PmnMyXBandzx9Diz5', 'hours' => '4-9 Every day',
-                    'phone' => '013-596-2166', 'is_main_branch' => true,
+                    'phone' => '013-596-2166', 'is_main_branch' => true, 'is_active' => true,
                     'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
             ]
         );

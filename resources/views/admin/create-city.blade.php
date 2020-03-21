@@ -1,4 +1,5 @@
 @extends('layouts.adminLayout')
+@section('title', 'Create City')
 
 @section('content')
     <div class="container">
