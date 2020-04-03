@@ -50,7 +50,7 @@
                     <a href="{{ url('/agent/profile') }}" data-toggle="tooltip" data-placement="right" title="PROFILE"> <i class="menu-icon fa fa-suitcase fa-lg"></i>PROFILE </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="{{ route('show_buses') }}" data-toggle="tooltip" data-placement="right" title="BUSES">
+                    <a href="{{ route('buses.index') }}" data-toggle="tooltip" data-placement="right" title="BUSES">
                         <i class="menu-icon fa fa-bus fa-lg"></i>
                         BUSES
                     </a>
