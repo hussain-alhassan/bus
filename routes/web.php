@@ -50,6 +50,7 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
         Route::get('/{office}/activate', 'agent\OfficeController@activate')->name('activate_office');
         Route::get('/{office}/disable', 'agent\OfficeController@disable')->name('disable_office');
     });
+
     // check owned by agent is in the same function setMainBranch()
     Route::post('/office/main-branch', 'agent\OfficeController@setMainBranch')->name('main_branch');
 
