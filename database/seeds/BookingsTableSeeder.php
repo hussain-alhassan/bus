@@ -167,7 +167,7 @@ class BookingsTableSeeder extends Seeder
                     'office_id' => Office::where('agency_id', Agency::where('name_en', 'Rumailah')->get('id')->first()->id)->get('id')->first()->id,
                     'depart' => Carbon::now()->addDays(5),
                     'seats' => '1',
-                    'status' => 'Confiremed',
+                    'status' => 'Confirmed',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],

@@ -28,47 +28,29 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Start</th>
-                            <th scope="col">End</th>
+                            <th scope="col">Nationality</th>
+                            <th scope="col">From</th>
+                            <th scope="col">To</th>
+                            <th scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($bookings as $booking)
                             <tr>
                                 <td scope="row">{{$booking->id}}</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>10/2/2019</td>
-                                <td>15/2/2019</td>
+                                <td>{{$booking->user->name}}</td>
+                                <td>{{$booking->user->nationality}}</td>
+                                <td>{{ (App::getLocale() === 'ar') ? $booking->from_city->name : $booking->from_city->name_en }}</td>
+                                <td>{{ (App::getLocale() === 'ar') ? $booking->to_city->name : $booking->to_city->name_en }}</td>
+                                @if($booking->status == 'Confirmed')
+                                    <td><span class="badge badge-success">{{$booking->status}}</span></td>
+                                @elseif($booking->status == 'Pending')
+                                    <td><span class="badge badge-warning">{{$booking->status}}</span></td>
+                                @elseif($booking->status == 'Rejected')
+                                    <td><span class="badge badge-danger">{{$booking->status}}</span></td>
+                                @endif
                             </tr>
                         @endforeach
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>1/8/2019</td>
-                            <td>15/9/2019</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>30/9/2019</td>
-                            <td>12/11/2019</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>8/1/2020</td>
-                            <td>13/2/2020</td>
-                        </tr>
                         </tbody>
                     </table>
                     </div>
