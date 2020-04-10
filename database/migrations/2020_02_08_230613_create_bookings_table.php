@@ -33,7 +33,7 @@ class CreateBookingsTable extends Migration
                 ->onDelete('cascade');
 
             $table->dateTime('depart');
-            $table->string('seats');
+            $table->integer('seats');
             $table->string('status');
             $table->timestamps();
         });

@@ -27,7 +27,7 @@
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Last</th>
                             <th scope="col">Handle</th>
                             <th scope="col">Start</th>
@@ -35,14 +35,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>10/2/2019</td>
-                            <td>15/2/2019</td>
-                        </tr>
+                        @foreach($bookings as $booking)
+                            <tr>
+                                <td scope="row">{{$booking->id}}</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>10/2/2019</td>
+                                <td>15/2/2019</td>
+                            </tr>
+                        @endforeach
                         <tr>
                             <td scope="row">2</td>
                             <td>Jacob</td>

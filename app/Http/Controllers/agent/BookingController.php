@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\agent;
 
+use App\Booking;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,9 @@ class BookingController extends Controller
 {
     public function index()
     {
-        return view('agent.booking');
+        $bookings = Booking::orderBy('created_at', 'DESC')->get();
+
+        return view('agent.booking', compact('bookings'));
     }
 
     /**
