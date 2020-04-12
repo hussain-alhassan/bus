@@ -38,7 +38,46 @@
                         @foreach($bookings as $booking)
                             <tr>
                                 <td scope="row">{{$booking->id}}</td>
-                                <td>{{$booking->user->name}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#details{{$booking->id}}">
+                                        {{$booking->user->name}}
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="details{{$booking->id}}" tabindex="-1" role="dialog" aria-labelledby="detailsTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="detailsTitle">{{$booking->user->name}}'s Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-bordered">
+                                                        <tbody id="tbody">
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <td style='text-align: center; width: 80%;'>
+                                                                    <span style="color: #13b238">{{$booking->user->name}}</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <td style='text-align: center; width: 80%;'>
+                                                                    <span style="color: #13b238">{{$booking->user->name}}</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>{{$booking->user->nationality}}</td>
                                 <td>{{ (App::getLocale() === 'ar') ? $booking->from_city->name : $booking->from_city->name_en }}</td>
                                 <td>{{ (App::getLocale() === 'ar') ? $booking->to_city->name : $booking->to_city->name_en }}</td>
@@ -50,6 +89,7 @@
                                     <td><span class="badge badge-danger">{{$booking->status}}</span></td>
                                 @endif
                             </tr>
+
                         @endforeach
                         </tbody>
                     </table>
