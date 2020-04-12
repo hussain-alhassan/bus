@@ -6,6 +6,7 @@ use App\User;
 use App\City;
 use App\Agency;
 use App\Office;
+use App\Trip;
 
 class BookingsTableSeeder extends Seeder
 {
@@ -129,10 +130,8 @@ class BookingsTableSeeder extends Seeder
         DB::table('bookings')->insert([
                 [
                     'user_id' => User::where('email', 'a@a.com')->get('id')->first()->id,
-                    'from_city_id' => City::where('name', 'الأحساء')->get('id')->first()->id,
-                    'to_city_id' => City::where('name', 'دبي')->get('id')->first()->id,
                     'office_id' => Office::where('agency_id', Agency::where('name_en', 'Rumailah')->get('id')->first()->id)->get('id')->first()->id,
-                    'depart' => Carbon::now()->addDays(7),
+                    'trip_id' => '1',
                     'seats' => '1',
                     'status' => 'Confirmed',
                     'created_at' => Carbon::now(),
@@ -140,10 +139,8 @@ class BookingsTableSeeder extends Seeder
                 ],
                 [
                     'user_id' => User::where('email', 'b@b.com')->get('id')->first()->id,
-                    'from_city_id' => City::where('name', 'الأحساء')->get('id')->first()->id,
-                    'to_city_id' => City::where('name', 'دبي')->get('id')->first()->id,
                     'office_id' => Office::where('agency_id', Agency::where('name_en', 'Rumailah')->get('id')->first()->id)->get('id')->first()->id,
-                    'depart' => Carbon::now()->addDays(2),
+                    'trip_id' => '1',
                     'seats' => '1',
                     'status' => 'Pending',
                     'created_at' => Carbon::now(),
@@ -151,10 +148,8 @@ class BookingsTableSeeder extends Seeder
                 ],
                 [
                     'user_id' => User::where('email', 'c@c.com')->get('id')->first()->id,
-                    'from_city_id' => City::where('name', 'الأحساء')->get('id')->first()->id,
-                    'to_city_id' => City::where('name', 'دبي')->get('id')->first()->id,
                     'office_id' => Office::where('agency_id', Agency::where('name_en', 'Rumailah')->get('id')->first()->id)->get('id')->first()->id,
-                    'depart' => Carbon::now()->addDay(),
+                    'trip_id' => '2',
                     'seats' => '1',
                     'status' => 'Rejected',
                     'created_at' => Carbon::now(),
@@ -162,10 +157,8 @@ class BookingsTableSeeder extends Seeder
                 ],
                 [
                     'user_id' => User::where('email', 'd@d.com')->get('id')->first()->id,
-                    'from_city_id' => City::where('name', 'الأحساء')->get('id')->first()->id,
-                    'to_city_id' => City::where('name', 'دبي')->get('id')->first()->id,
                     'office_id' => Office::where('agency_id', Agency::where('name_en', 'Rumailah')->get('id')->first()->id)->get('id')->first()->id,
-                    'depart' => Carbon::now()->addDays(5),
+                    'trip_id' => '1',
                     'seats' => '1',
                     'status' => 'Confirmed',
                     'created_at' => Carbon::now(),
@@ -173,10 +166,8 @@ class BookingsTableSeeder extends Seeder
                 ],
                 [
                     'user_id' => User::where('email', 'e@e.com')->get('id')->first()->id,
-                    'from_city_id' => City::where('name', 'الأحساء')->get('id')->first()->id,
-                    'to_city_id' => City::where('name', 'دبي')->get('id')->first()->id,
                     'office_id' => Office::where('agency_id', Agency::where('name_en', 'Rumailah')->get('id')->first()->id)->get('id')->first()->id,
-                    'depart' => Carbon::now()->addDays(9),
+                    'trip_id' => '2',
                     'seats' => '3',
                     'status' => 'Pending',
                     'created_at' => Carbon::now(),

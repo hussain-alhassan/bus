@@ -70,13 +70,13 @@
                                                             <tr>
                                                                 <th>From</th>
                                                                 <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{ (App::getLocale() === 'ar') ? $booking->from_city->name : $booking->from_city->name_en }}</span>
+                                                                    <span style="color: #13b238">{{ (App::getLocale() === 'ar') ? $booking->trip->from_city->name : $booking->trip->from_city->name_en }}</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>To</th>
                                                                 <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{ (App::getLocale() === 'ar') ? $booking->to_city->name : $booking->to_city->name_en }}</span>
+                                                                    <span style="color: #13b238">{{ (App::getLocale() === 'ar') ? $booking->trip->to_city->name : $booking->trip->to_city->name_en }}</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -169,8 +169,8 @@
                                     </div>
                                 </td>
                                 <td>{{$booking->user->nationality}}</td>
-                                <td>{{ (App::getLocale() === 'ar') ? $booking->from_city->name : $booking->from_city->name_en }}</td>
-                                <td>{{ (App::getLocale() === 'ar') ? $booking->to_city->name : $booking->to_city->name_en }}</td>
+                                <td>{{ (App::getLocale() === 'ar') ? $booking->trip->from_city->name : $booking->trip->from_city->name_en }}</td>
+                                <td>{{ (App::getLocale() === 'ar') ? $booking->trip->to_city->name : $booking->trip->to_city->name_en }}</td>
                                 @if($booking->status == 'Confirmed')
                                     <td><span class="badge badge-success">{{$booking->status}}</span></td>
                                 @elseif($booking->status == 'Pending')

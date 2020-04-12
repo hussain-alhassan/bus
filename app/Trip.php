@@ -11,8 +11,13 @@ class Trip extends Model
         return $this->belongsTo(Agency::class);
     }
 
-    public function city()
+    public function from_city()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class, 'from_city_id');
+    }
+
+    public function to_city()
+    {
+        return $this->belongsTo(City::class, 'to_city_id');
     }
 }

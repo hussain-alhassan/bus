@@ -11,18 +11,13 @@ class Booking extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function from_city()
-    {
-        return $this->belongsTo(City::class, 'from_city_id');
-    }
-
-    public function to_city()
-    {
-        return $this->belongsTo(City::class, 'to_city_id');
-    }
-
     public function office()
     {
         return $this->belongsTo(Office::class);
+    }
+
+    public function trip()
+    {
+        return $this->belongsTo(Trip::class);
     }
 }
