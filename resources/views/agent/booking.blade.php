@@ -11,6 +11,14 @@
             <div class="card">
                 <div class="card-header">Bookings</div>
                 <div class="card-body">
+
+                    {{-- show success message --}}
+                    @if (session('success'))
+                        <div class="alert alert-success text-center">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    {{----}}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="min">Start Date</label>
@@ -34,6 +42,7 @@
                             <th scope="col">To</th>
                             <th scope="col">Departure</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -201,6 +210,11 @@
                                 @elseif($booking->status == 'Rejected')
                                     <td><span class="badge badge-danger">{{$booking->status}}</span></td>
                                 @endif
+                                <td>
+                                    <a href="{{ route('approve_booking', [$booking->id])}}" class="btn btn-outline-success"><i class="menu-icon fa fa-check fa-xs"></i></a>
+                                    <a href="{{ route('reject_booking', [$booking->id])}}" class="btn btn-outline-danger"><i class="menu-icon fa fa-times fa-xs"></i></a>
+                                    <a href="{{ route('pend_booking', [$booking->id])}}" class="btn btn-outline-warning"><span style="font-weight: bold">~</span></a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

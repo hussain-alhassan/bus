@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers\agent;
 
+use App\Agency;
 use App\Booking;
 use App\Http\Controllers\Controller;
+use App\Office;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
     public function index()
     {
+        // good one
+//        $agency = DB::table('agency_user')->where('user_id', Auth::id())->first()->agency_id;
+//        $offices = Office::select('id')->where('agency_id', $agency)->get()->toArray();
+//        $bookings = Booking::whereIn('office_id', $offices)->orderBy('created_at', 'DESC')->get();
+
         $bookings = Booking::orderBy('created_at', 'DESC')->get();
 
         return view('agent.booking', compact('bookings'));
@@ -70,6 +79,24 @@ class BookingController extends Controller
         //
     }
 
+    public function approve(Booking $booking)
+    {
+        $booking->update(['status' => 'Confirmed']);
+        return redirect()->route('bookings.index')->with('success', 'Booking record has been approved successfully');
+    }
+
+    public function pend(Booking $booking)
+    {
+        $booking->update(['status' => 'Pending']);
+        return redirect()->route('bookings.index')->with('success', 'Booking record has been pended successfully');
+    }
+
+    public function reject(Booking $booking)
+    {
+        $booking->update(['status' => 'Rejected']);
+        return redirect()->route('bookings.index')->with('success', 'Booking record has been rejected successfully');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -80,4 +107,5 @@ class BookingController extends Controller
     {
         //
     }
+
 }
