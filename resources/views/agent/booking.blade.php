@@ -28,19 +28,20 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Nationality</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">ID Type</th>
                             <th scope="col">From</th>
                             <th scope="col">To</th>
+                            <th scope="col">Departure</th>
                             <th scope="col">Status</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($bookings as $booking)
                             <tr>
-                                <td scope="row">{{$booking->id}}</td>
-                                <td>
+                                <td scope="row">
                                     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#details{{$booking->id}}">
-                                        {{$booking->user->name}}
+                                        {{$booking->id}}
                                     </button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="details{{$booking->id}}" tabindex="-1" role="dialog" aria-labelledby="detailsTitle" aria-hidden="true">
@@ -55,122 +56,144 @@
                                                 <div class="modal-body">
                                                     <table class="table table-bordered">
                                                         <tbody id="tbody">
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->id}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Name</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->name}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>From</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{ (App::getLocale() === 'ar') ? $booking->trip->from_city->name : $booking->trip->from_city->name_en }}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>To</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{ (App::getLocale() === 'ar') ? $booking->trip->to_city->name : $booking->trip->to_city->name_en }}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Office</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->office->name}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Nationality</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->nationality}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Email</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->email}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Phone</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->phone}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>National ID</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->national_id}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>National ID expiration Date</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->national_id_exp_date}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>National ID Issuance City</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->national_id_issuance_city}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Passport ID</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->passport_id}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Passport ID Expiration Date</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->passport_exp_date}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Passport Issuance City</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->passport_issuance_city}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Iqama ID</th>
-                                                                <td style='text-align: center'>
-                                                                    <span style="color: #13b238">{{$booking->user->iqama_id}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Iqama Expiration Date</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->iqama_exp_date}}</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Iqama Issuance City</th>
-                                                                <td style='text-align: center;'>
-                                                                    <span style="color: #13b238">{{$booking->user->iqama_issuance_city}}</span>
-                                                                </td>
-                                                            </tr>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->id}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->name}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Trip No.</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{ $booking->trip->trip_number}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>From</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{ (App::getLocale() === 'ar') ? $booking->trip->from_city->name : $booking->trip->from_city->name_en }}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>To</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{ (App::getLocale() === 'ar') ? $booking->trip->to_city->name : $booking->trip->to_city->name_en }}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Departure</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{\Carbon\Carbon::parse($booking->trip->depart)->format('d/m/Y h:i A')}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Office</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->office->name}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Nationality</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->nationality}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Email</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->email}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Phone</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->phone}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>National ID</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->national_id}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>National ID expiration Date</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->national_id_exp_date}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>National ID Issuance City</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->national_id_issuance_city}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Passport ID</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->passport_id}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Passport ID Expiration Date</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->passport_exp_date}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Passport Issuance City</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->passport_issuance_city}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Iqama ID</th>
+                                                            <td style='text-align: center'>
+                                                                <span style="color: #13b238">{{$booking->user->igama_id}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Iqama Expiration Date</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->igama_exp_date}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Iqama Issuance City</th>
+                                                            <td style='text-align: center;'>
+                                                                <span style="color: #13b238">{{$booking->user->igama_issuance_city}}</span>
+                                                            </td>
+                                                        </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{$booking->user->nationality}}</td>
+                                <td>{{$booking->user->name}}</td>
+                                @if($booking->user->national_id)
+                                    <td>{{$booking->user->national_id}}</td>
+                                    <td>National ID</td>
+                                @elseif($booking->user->passport_id)
+                                    <td>{{$booking->user->passport_id}}</td>
+                                    <td>Passport</td>
+                                @else
+                                    <td>{{$booking->user->igama_id}}</td>
+                                    <td>Igama ID</td>
+                                @endif
                                 <td>{{ (App::getLocale() === 'ar') ? $booking->trip->from_city->name : $booking->trip->from_city->name_en }}</td>
                                 <td>{{ (App::getLocale() === 'ar') ? $booking->trip->to_city->name : $booking->trip->to_city->name_en }}</td>
+                                <td>{{\Carbon\Carbon::parse($booking->trip->depart)->format('d/m/Y')}}</td>
                                 @if($booking->status == 'Confirmed')
                                     <td><span class="badge badge-success">{{$booking->status}}</span></td>
                                 @elseif($booking->status == 'Pending')
@@ -179,7 +202,6 @@
                                     <td><span class="badge badge-danger">{{$booking->status}}</span></td>
                                 @endif
                             </tr>
-
                         @endforeach
                         </tbody>
                     </table>
@@ -204,9 +226,9 @@
             $('#booking').DataTable({
                 "dom": 'Bfrtip',
                 "buttons": [
-                    { extend: 'excel', filename: dateNow() },
-                    { extend: 'pdf', filename: dateNow() },
-                    'print'
+                    { extend: 'excel', filename: dateNow(), exportOptions: { columns: [1,2,3,4,5,6] } },
+                    { extend: 'pdf', filename: dateNow(), exportOptions: { columns: [1,2,3,4,5,6] } },
+                    { extend: 'print', exportOptions: { columns: [1,2,3,4,5,6] } },
                 ]
             });
 
@@ -225,7 +247,7 @@
                         var max = new Date($('#max').val());
                         max.setHours(0,0,0,0);
                     }
-                    var parts = data[4].split('/');
+                    var parts = data[6].split('/');
                     var startDate = new Date(parts[1]+'/'+parts[0]+'/'+parts[2]);
 
                     if (min == null && max == null) { return true; }
