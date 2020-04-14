@@ -39,17 +39,18 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     Route::get('/profile', 'agent\AgentController@profile');
     Route::post('/profile/{agency}/update', 'agent\AgentController@update');
 
-    Route::get('/offices', 'agent\OfficeController@showOffices');
+    Route::get('/offices', 'agent\OfficeController@showOffices')->name('show_offices');
     Route::get('/office/create', 'agent\OfficeController@create')->name('create_office');
     Route::post('/office/store', 'agent\OfficeController@store')->name('store_office');
 
     // office protected routes
-    Route::group(['prefix' => 'office', 'middleware' => 'own.office'], function() {
+    Route::group(['prefix' => 'office', 'middleware' => 'owned.by.agent'], function() {
         Route::get('/{office}/edit', 'agent\OfficeController@edit')->name('edit_office');
         Route::post('/{office}/update', 'agent\OfficeController@update')->name('update_office');
         Route::get('/{office}/activate', 'agent\OfficeController@activate')->name('activate_office');
         Route::get('/{office}/disable', 'agent\OfficeController@disable')->name('disable_office');
     });
+
 
     // check own office is in the same function setMainBranch()
     Route::post('/office/main-branch', 'agent\OfficeController@setMainBranch')->name('main_branch');
@@ -61,6 +62,13 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
         Route::get('/{booking}/reject', 'agent\BookingController@reject')->name('reject_booking');
     });
 
+    // buses unprotected routes
+    Route::resource('buses', 'agent\BusController')->only(['index', 'create', 'store',]);
+
+    // buses protected routes
+    Route::group(['middleware' => 'owned.by.agent'], function() {
+        Route::resource('buses', 'agent\BusController')->except(['index', 'create', 'store']);
+    });
 });
 /////////// End of Agent section //////////////
 

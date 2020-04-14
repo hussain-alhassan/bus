@@ -63,8 +63,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'traveler' => \App\Http\Middleware\TravelerMiddleware::class,
         'agent' => \App\Http\Middleware\AgentMiddleware::class,
-        'own.office' => \App\Http\Middleware\OwnOfficeMiddleware::class,
         'own.agency' => \App\Http\Middleware\OwnAgencyBookingMiddleware::class,
+        'owned.by.agent' => \App\Http\Middleware\OwnedByAgentMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
 

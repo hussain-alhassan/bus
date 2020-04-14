@@ -24,6 +24,7 @@ class CreateBusesTable extends Migration
             $table->string('bus_number')->nullable();
             $table->string('registration')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

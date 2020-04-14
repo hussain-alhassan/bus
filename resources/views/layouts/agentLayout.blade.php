@@ -50,10 +50,13 @@
                     <a href="{{ url('/agent/profile') }}" data-toggle="tooltip" data-placement="right" title="PROFILE"> <i class="menu-icon fa fa-suitcase fa-lg"></i>PROFILE </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="BUSES"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>
+                    <a href="{{ route('buses.index') }}" data-toggle="tooltip" data-placement="right" title="BUSES">
+                        <i class="menu-icon fa fa-bus fa-lg"></i>
+                        BUSES
+                    </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="{{ url('/agent/offices') }}" data-toggle="tooltip" data-placement="right" title="OFFIECES">
+                    <a href="{{ route('show_offices') }}" data-toggle="tooltip" data-placement="right" title="OFFICES">
                         <i class="menu-icon fa fa-building fa-lg"></i>
                         OFFICES
                     </a>
