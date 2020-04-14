@@ -24,7 +24,7 @@ class OwnAgencyBookingMiddleware
 
         if(in_array($requestedBooking->office_id, $offices->all())) return $next($request);
 
-        abort(404);
+        abort(403);
 
     }
 }
