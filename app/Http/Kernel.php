@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'traveler' => \App\Http\Middleware\TravelerMiddleware::class,
         'agent' => \App\Http\Middleware\AgentMiddleware::class,
         'own.office' => \App\Http\Middleware\OwnOfficeMiddleware::class,
+        'own.agency' => \App\Http\Middleware\OwnAgencyBookingMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
 

@@ -54,10 +54,12 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     // check own office is in the same function setMainBranch()
     Route::post('/office/main-branch', 'agent\OfficeController@setMainBranch')->name('main_branch');
 
-    // Booking
-    Route::get('/{booking}/approve', 'agent\BookingController@approve')->name('approve_booking');
-    Route::get('/{booking}/pend', 'agent\BookingController@pend')->name('pend_booking');
-    Route::get('/{booking}/reject', 'agent\BookingController@reject')->name('reject_booking');
+    // Booking protected routes
+    Route::group(['prefix' => 'office', 'middleware' => 'own.agency'], function() {
+        Route::get('/{booking}/approve', 'agent\BookingController@approve')->name('approve_booking');
+        Route::get('/{booking}/pend', 'agent\BookingController@pend')->name('pend_booking');
+        Route::get('/{booking}/reject', 'agent\BookingController@reject')->name('reject_booking');
+    });
 
 });
 /////////// End of Agent section //////////////
