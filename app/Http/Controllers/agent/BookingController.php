@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\agent;
 
-use App\Agency;
 use App\Booking;
 use App\Http\Controllers\Controller;
 use App\Office;
@@ -14,12 +13,9 @@ class BookingController extends Controller
 {
     public function index()
     {
-        // good one
-//        $agency = DB::table('agency_user')->where('user_id', Auth::id())->first()->agency_id;
-//        $offices = Office::select('id')->where('agency_id', $agency)->get()->toArray();
-//        $bookings = Booking::whereIn('office_id', $offices)->orderBy('created_at', 'DESC')->get();
-
-        $bookings = Booking::orderBy('created_at', 'DESC')->get();
+        $agency = DB::table('agency_user')->where('user_id', Auth::id())->first()->agency_id;
+        $offices = Office::select('id')->where('agency_id', $agency)->get()->toArray();
+        $bookings = Booking::whereIn('office_id', $offices)->orderBy('created_at', 'DESC')->get();
 
         return view('agent.booking', compact('bookings'));
     }
