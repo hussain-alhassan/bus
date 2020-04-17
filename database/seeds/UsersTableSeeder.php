@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'name' => 'Mohammed Alali',
                     'email' => 'a@a.com',
-                    'password' => '$2y$10$BBuwaLSRytbBtLLTXFoDqeNGhWrMuqWcUxjqSwZlsbH9nO4HGMdIq',
+                    'password' => bcrypt('secret'),
                     'role' => 't',
                     'nationality' => 'Saudi',
                     'gender' => 'Male',
@@ -63,7 +63,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'name' => 'Nasser Almousa',
                     'email' => 'b@b.com',
-                    'password' => '$2y$10$BBuwaLSRytbBtLLTXFoDqeNGhWrMuqWcUxjqSwZlsbH9nO4HGMdIq',
+                    'password' => bcrypt('secret'),
                     'role' => 't',
                     'nationality' => 'Syrian',
                     'gender' => 'Male',
@@ -84,7 +84,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'name' => 'John Doe',
                     'email' => 'c@c.com',
-                    'password' => '$2y$10$BBuwaLSRytbBtLLTXFoDqeNGhWrMuqWcUxjqSwZlsbH9nO4HGMdIq',
+                    'password' => bcrypt('secret'),
                     'role' => 't',
                     'nationality' => 'English',
                     'gender' => 'Male',
@@ -105,7 +105,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'name' => 'Sara Ali',
                     'email' => 'd@d.com',
-                    'password' => '$2y$10$BBuwaLSRytbBtLLTXFoDqeNGhWrMuqWcUxjqSwZlsbH9nO4HGMdIq',
+                    'password' => bcrypt('secret'),
                     'role' => 't',
                     'nationality' => 'Egyptian',
                     'gender' => 'Female',
@@ -125,7 +125,7 @@ class UsersTableSeeder extends Seeder
                 ],
                 ['name' => 'Aisah Farouq',
                     'email' => 'e@e.com',
-                    'password' => '$2y$10$BBuwaLSRytbBtLLTXFoDqeNGhWrMuqWcUxjqSwZlsbH9nO4HGMdIq',
+                    'password' => bcrypt('secret'),
                     'role' => 't',
                     'nationality' => 'Sudanese',
                     'gender' => 'Female',
