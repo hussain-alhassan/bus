@@ -162,8 +162,14 @@
         <td><span class="badge badge-danger">{{$booking->status}}</span></td>
     @endif
     <td>
-        <a href="{{ route('approve_booking', [$booking->id])}}" class="btn btn-outline-success"><i class="menu-icon fa fa-check fa-xs"></i></a>
-        <a href="{{ route('reject_booking', [$booking->id])}}" class="btn btn-outline-danger"><i class="menu-icon fa fa-times fa-xs"></i></a>
-        <a href="{{ route('pend_booking', [$booking->id])}}" class="btn btn-outline-warning"><span style="font-weight: bold">~</span></a>
+        @switch($booking->status)
+            @case('Rejected')
+                <a href="{{ route('approve_booking', [$booking->id])}}" class="btn btn-outline-success"><i class="menu-icon fa fa-check fa-xs"></i></a>
+                @break
+            @case('Pending')
+                <a href="{{ route('approve_booking', [$booking->id])}}" class="btn btn-outline-success"><i class="menu-icon fa fa-check fa-xs"></i></a>
+                <a href="{{ route('reject_booking', [$booking->id])}}" onclick="return confirm('Are you sure you want to reject this booking record?')" class="btn btn-outline-danger"><i class="menu-icon fa fa-times fa-xs"></i></a>
+                @break
+        @endswitch
     </td>
 </tr>
