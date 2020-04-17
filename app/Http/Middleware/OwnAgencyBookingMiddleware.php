@@ -18,11 +18,11 @@ class OwnAgencyBookingMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $agency_id = DB::table('agency_user')->where('user_id', Auth::id())->first()->agency_id;
-        $offices = Office::select('id')->where('agency_id', $agency_id)->get()->pluck('id');
+        $agency_id = Auth::user()->agencies()->first()->id;
+        $officesIds = Office::select('id')->where('agency_id', $agency_id)->get()->pluck('id');
         $requestedBooking = $request->route('booking');
 
-        if(in_array($requestedBooking->office_id, $offices->all())) return $next($request);
+        if(in_array($requestedBooking->office_id, $officesIds->all())) return $next($request);
 
         abort(403);
 

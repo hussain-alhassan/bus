@@ -13,9 +13,9 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $agency = DB::table('agency_user')->where('user_id', Auth::id())->first()->agency_id;
-        $offices = Office::select('id')->where('agency_id', $agency)->get()->toArray();
-        $bookings = Booking::whereIn('office_id', $offices)->orderBy('created_at', 'DESC')->get();
+        $agencyId = DB::table('agency_user')->where('user_id', Auth::id())->first()->agency_id;
+        $officesIds = Office::select('id')->where('agency_id', $agencyId)->get()->toArray();
+        $bookings = Booking::whereIn('office_id', $officesIds)->orderBy('created_at', 'DESC')->get();
 
         return view('agent.booking', compact('bookings'));
     }
