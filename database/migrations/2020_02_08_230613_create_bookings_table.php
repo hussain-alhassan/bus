@@ -20,20 +20,15 @@ class CreateBookingsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
 
-            $table->unsignedBigInteger('from_city_id')->index();
-            $table->foreign('from_city_id')->references('id')->on('cities')
-                ->onDelete('cascade');
-
-            $table->unsignedBigInteger('to_city_id')->index();
-            $table->foreign('to_city_id')->references('id')->on('cities')
-                ->onDelete('cascade');
-
             $table->unsignedBigInteger('office_id')->index();
             $table->foreign('office_id')->references('id')->on('offices')
                 ->onDelete('cascade');
 
-            $table->dateTime('depart');
-            $table->string('seats');
+            $table->unsignedBigInteger('trip_id')->index();
+            $table->foreign('trip_id')->references('id')->on('trips')
+                ->onDelete('cascade');
+
+            $table->integer('seats');
             $table->string('status');
             $table->timestamps();
         });

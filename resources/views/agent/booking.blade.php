@@ -11,6 +11,14 @@
             <div class="card">
                 <div class="card-header">Bookings</div>
                 <div class="card-body">
+
+                    {{-- show success message --}}
+                    @if (session('success'))
+                        <div class="alert alert-success text-center">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    {{----}}
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="min">Start Date</label>
@@ -27,46 +35,20 @@
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                            <th scope="col">Start</th>
-                            <th scope="col">End</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">ID Type</th>
+                            <th scope="col">From</th>
+                            <th scope="col">To</th>
+                            <th scope="col">Departure</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>10/2/2019</td>
-                            <td>15/2/2019</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>1/8/2019</td>
-                            <td>15/9/2019</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>30/9/2019</td>
-                            <td>12/11/2019</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>8/1/2020</td>
-                            <td>13/2/2020</td>
-                        </tr>
+                        @foreach($bookings as $booking)
+                            @include('agent.bookings.bookings-list')
+                        @endforeach
                         </tbody>
                     </table>
                     </div>
@@ -90,9 +72,9 @@
             $('#booking').DataTable({
                 "dom": 'Bfrtip',
                 "buttons": [
-                    { extend: 'excel', filename: dateNow() },
-                    { extend: 'pdf', filename: dateNow() },
-                    'print'
+                    { extend: 'excel', filename: dateNow(), exportOptions: { columns: [1,2,3,4,5,6] } },
+                    { extend: 'pdf', filename: dateNow(), exportOptions: { columns: [1,2,3,4,5,6] } },
+                    { extend: 'print', exportOptions: { columns: [1,2,3,4,5,6] } },
                 ]
             });
 
@@ -111,7 +93,7 @@
                         var max = new Date($('#max').val());
                         max.setHours(0,0,0,0);
                     }
-                    var parts = data[4].split('/');
+                    var parts = data[6].split('/');
                     var startDate = new Date(parts[1]+'/'+parts[0]+'/'+parts[2]);
 
                     if (min == null && max == null) { return true; }
