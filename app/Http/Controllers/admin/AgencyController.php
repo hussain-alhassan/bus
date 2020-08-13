@@ -65,31 +65,33 @@ class AgencyController extends Controller
         return view('admin.agencies.edit-agency', compact('agency'));
     }
 
-    public function update(City $city)
+    public function update(StoreAgencyRequest $request, Agency $agency)
     {
-        $data = $this->validateRequest($city);
-        $data['is_active'] = isset($data['is_active']) ? 1 : 0;
+        $isStored = DB::transaction(function () use ($request, $agency) {
+            try {
+                if($request->file('logo')) {
+                    $logo = $request->file('logo');
+                    $fileName = 'agency';
+                    // image id
+                    $fileName .= '_' . $agency->id;
+                    // extension
+                    $fileName .= '.' . $logo->getClientOriginalExtension();
+                    $logo->storeAs('agencies', $fileName, config('app.storage_disk'));
+                    $agency->logo = $fileName;
+                }
 
-        try {
-            $city->update($data);
+                $agency->update($request->except('logo'));
+                return true;
+            } catch(\Exception $e) {
+                DB::rollBack();
+                return false;
+            }
+        });
 
-        } catch(\Exception $e) {
-            return redirect()->back()->withErrors($e);
+        if ($isStored) {
+            return redirect(route('agencies.index'))->with('success', 'Agency has been updated successfully.');
         }
 
-        return redirect('/admin/cities')->with('success', 'City has been updated successfully.');
-    }
-
-    /**
-     * validate request data before create and update
-     */
-    public function validateRequest($city = [])
-    {
-        $cityID = isset($city->id) ? $city->id : '';
-        return request()->validate([
-            'name' => 'required|max:25|unique:cities,name,' . $cityID,
-            'name_en' => 'required|max:25|unique:cities,name_en,' . $cityID,
-            'is_active' => 'max:2|nullable',
-        ]);
+        return redirect()->back()->withErrors('Unable to update Agency');
     }
 }

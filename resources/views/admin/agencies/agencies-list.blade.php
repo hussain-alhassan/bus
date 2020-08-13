@@ -25,14 +25,8 @@
                                 <td>{{$agency->name_en}}</td>
                                 <td>{{ $agency->hotline}}</td>
                                 <td>
-                                    <a href="/admin/agency/{{$agency->id}}/edit/" class="btn btn-primary">Edit</a>
-                                    @if($agency->is_active === 1)
-                                        <a href="/admin/agency/{{$agency->id}}/disable" class="btn btn-danger"
-                                        onclick="return confirm(`Are you sure you want to disable '{{$agency->name}}' ?`)">Disable</a>
-                                    @else
-                                        <a href="/admin/agency/{{$agency->id}}/activate" class="btn btn-success"
-                                           onclick="return confirm(`Are you sure you want to activate '{{$agency->name}}' ?`)">Activate</a>
-                                    @endif
+{{--                                    <a href="/admin/agency/{{$agency->id}}/edit/" class="btn btn-primary">Edit</a>--}}
+                                    <a href="{{route('agencies.edit', ['agency' => $agency->id])}}" class="btn btn-primary">Edit</a>
                                 </td>
                             </tr>
                         @endforeach
