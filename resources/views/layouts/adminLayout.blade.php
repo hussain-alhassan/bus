@@ -43,7 +43,7 @@
                     <a href="{{ route('cities') }}"> <i class="menu-icon fa fa-globe fa-lg"></i>CITIES </a>
                 </li>
                 <li style="font-weight: bold">
-                    <a href="widgets.html"> <i class="menu-icon fa fa-handshake-o fa-lg"></i>AGENCIES </a>
+                    <a href="{{route('agencies.index')}}"> <i class="menu-icon fa fa-handshake-o fa-lg"></i>AGENCIES </a>
                 </li>
                 <li style="font-weight: bold">
                     <a href="widgets.html"> <i class="menu-icon fa fa-bus fa-lg"></i>BUSES </a>

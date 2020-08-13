@@ -73,7 +73,6 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
 /////////// End of Agent section //////////////
 
 /*///////////// Admin Section //////////////*/
-
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::resource('dashboard', 'admin\AdminController');
     Route::get('cities', 'admin\CityController@showCities')->name('cities');
@@ -83,5 +82,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::post('city/{city}/update', 'admin\CityController@update');
     Route::get('city/{city}/activate', 'admin\CityController@activate');
     Route::get('city/{city}/disable', 'admin\CityController@disable');
+
+    Route::resource('agencies', 'admin\AgencyController');
 });
 /////////// End of Admin section //////////////
