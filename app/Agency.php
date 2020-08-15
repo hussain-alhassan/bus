@@ -27,4 +27,14 @@ class Agency extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function getImageContent()
+    {
+        return asset("storage/agencies/$this->logo");
+    }
+
+    public function deletePreviousLogo()
+    {
+        unlink("storage/agencies/$this->logo");
+    }
 }

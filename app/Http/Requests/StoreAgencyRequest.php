@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreAgencyRequest extends FormRequest
 {
@@ -12,11 +13,11 @@ class StoreAgencyRequest extends FormRequest
      */
     public function authorize()
     {
-        $agencyID = auth()->user()->agencies()->first()->id;
+        if(Auth::user()->role === 's') return true;
 
-        if(intval($this->route('agency')) === $agencyID) return true;
+        $agencyID = Auth::user()->agencies()->first()->id;
 
-        return false;
+        return intval($this->route('agency')) === $agencyID;
     }
 
     /**

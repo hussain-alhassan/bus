@@ -228,4 +228,6 @@ return [
 
     ],
 
+    'storage_disk' => env('STORAGE_DISK', 'public'),
+
 ];
