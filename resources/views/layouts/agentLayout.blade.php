@@ -35,19 +35,29 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="font-weight-bold active">
-                    <a href="{{ url('/agent/dashboard') }}" data-toggle="tooltip" data-placement="right" title="DASHBOARD"><i class="menu-icon fa fa-laptop fa-lg"></i>DASHBOARD </a>
+                    <a href="{{ url('/agent/dashboard') }}" data-toggle="tooltip" data-placement="right" title="DASHBOARD">
+                        <i class="menu-icon fa fa-laptop fa-lg"></i>DASHBOARD
+                    </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="ADD TRAVELER"> <i class="menu-icon fa fa-user fa-lg"></i>ADD TRAVELER </a>
+                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="ADD TRAVELER">
+                        <i class="menu-icon fa fa-user fa-lg"></i>ADD TRAVELER
+                    </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="{{ route('bookings.index') }}" data-toggle="tooltip" data-placement="right" title="BOOKINGS"> <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS </a>
+                    <a href="{{ route('bookings.index') }}" data-toggle="tooltip" data-placement="right" title="BOOKINGS">
+                        <i class="menu-icon fa fa-calendar fa-lg"></i>BOOKINGS
+                    </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="TRIPS"> <i class="menu-icon fa fa-suitcase fa-lg"></i>TRIPS </a>
+                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="TRIPS">
+                        <i class="menu-icon fa fa-suitcase fa-lg"></i>TRIPS
+                    </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="{{ url('/agent/profile') }}" data-toggle="tooltip" data-placement="right" title="PROFILE"> <i class="menu-icon fa fa-suitcase fa-lg"></i>PROFILE </a>
+                    <a href="{{route('agency.profile')}}" data-toggle="tooltip" data-placement="right" title="PROFILE">
+                        <i class="menu-icon fa fa-handshake-o fa-lg"></i>PROFILE
+                    </a>
                 </li>
                 <li class="font-weight-bold">
                     <a href="{{ route('buses.index') }}" data-toggle="tooltip" data-placement="right" title="BUSES">

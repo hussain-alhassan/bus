@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Agency;
+use App\Http\Controllers\agent\AgentController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAgencyRequest;
 use Illuminate\Support\Facades\DB;
@@ -67,29 +68,10 @@ class AgencyController extends Controller
 
     public function update(StoreAgencyRequest $request, Agency $agency)
     {
-        $isStored = DB::transaction(function () use ($request, $agency) {
-            try {
-                if($request->file('logo')) {
-                    $logo = $request->file('logo');
-                    $fileName = 'agency';
-                    // image id
-                    $fileName .= '_' . $agency->id;
-                    // extension
-                    $fileName .= '.' . $logo->getClientOriginalExtension();
-                    $logo->storeAs('agencies', $fileName, config('app.storage_disk'));
-                    $agency->logo = $fileName;
-                }
-
-                $agency->update($request->except('logo'));
-                return true;
-            } catch(\Exception $e) {
-                DB::rollBack();
-                return false;
-            }
-        });
+        $isStored = (new AgentController)->setProfile($request, $agency);
 
         if ($isStored) {
-            return redirect(route('agencies.index'))->with('success', 'Agency has been updated successfully.');
+            return redirect(route('agencies.index'))->with('success', 'Profile has been updated successfully.');
         }
 
         return redirect()->back()->withErrors('Unable to update Agency');

@@ -24,7 +24,6 @@ Route::group(['middleware'=>'auth'],function () {
 });
 
 /*///////////// Traveler Section //////////////*/
-
 Route::group(['middleware' => 'traveler'], function() {
     Route::resource('/travel', 'traveler\TravelerController');
 });
@@ -32,11 +31,10 @@ Route::group(['middleware' => 'traveler'], function() {
 
 
 /*///////////// Agent Section //////////////*/
-
 Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     Route::resource('dashboard', 'agent\AgentController');
     Route::resource('bookings', 'agent\BookingController');
-    Route::get('/profile', 'agent\AgentController@profile');
+    Route::get('/profile', 'agent\AgentController@profile')->name('agency.profile');
     Route::post('/profile/{agency}/update', 'agent\AgentController@update');
 
     Route::get('/offices', 'agent\OfficeController@showOffices')->name('show_offices');

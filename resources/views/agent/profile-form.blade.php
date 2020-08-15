@@ -41,7 +41,7 @@
         <label for="hotline" class="col-md-4 col-form-label text-md-right">Logo</label>
 
         <div class="col-md-6">
-            <img src="{{asset("/storage/images/logos/$agency->logo")}}" alt="Agency logo" height="200" width="280">
+            <img src="{{$agency->getImageContent()}}" alt="Agency logo" height="200" width="280">
         </div>
     </div>
 

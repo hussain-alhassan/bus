@@ -32,4 +32,9 @@ class Agency extends Model
     {
         return asset("storage/agencies/$this->logo");
     }
+
+    public function deletePreviousLogo()
+    {
+        unlink("storage/agencies/$this->logo");
+    }
 }
