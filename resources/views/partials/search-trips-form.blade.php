@@ -13,7 +13,7 @@
 
     <div class="card-header">Find Trips</div>
     <div class="card-body">
-        <form method="GET" action="/trips/search">
+        <form action="{{route('my_trip')}}">
             @csrf
 
             <div class="container">
@@ -44,7 +44,6 @@
 
                     <div class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">Depart</label>
-
                         <input type="date" class="form-control @error('depart') is-invalid @enderror"
                                name="depart" value="{{ old('depart') ?? Request::get('depart') }}" required>
                     </div>

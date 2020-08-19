@@ -61,12 +61,19 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     });
 
     // buses unprotected routes
-    Route::resource('buses', 'agent\BusController')->only(['index', 'create', 'store',]);
+    Route::resource('buses', 'agent\BusController')->only(['index', 'create', 'store']);
 
     // buses protected routes
     Route::group(['middleware' => 'owned.by.agent'], function() {
         Route::resource('buses', 'agent\BusController')->except(['index', 'create', 'store']);
     });
+
+    Route::resource('trips', 'agent\TripController')->only(['index', 'create', 'store']);
+    Route::group(['middleware' => 'owned.by.agent'], function() {
+        Route::resource('trips', 'agent\TripController')->except(['index', 'create', 'store']);
+    });
+
+
 });
 /////////// End of Agent section //////////////
 

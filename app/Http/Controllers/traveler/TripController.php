@@ -13,6 +13,7 @@ class TripController extends Controller
     //
     /**
      * Search for available trips
+     * @param FindTripsRequest $request
      * @return mixed
      * @throws \Exception
      */
