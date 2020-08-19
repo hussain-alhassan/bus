@@ -5,7 +5,7 @@
         <div class="row pb-3">
             <div class="col-md-12">
                 <div class="card">
-                    <h5 class="card-header">Trips Details </h5>
+                    <h5 class="card-header">Trips Details</h5>
                     <div class="card-body d-flex align-items-baseline">
                         <div class="pr-4">
                             From: {{$searchInputs['from']}} -> {{$searchInputs['to']}} |

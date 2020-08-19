@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li class="font-weight-bold">
-                    <a href="widgets.html" data-toggle="tooltip" data-placement="right" title="TRIPS">
+                    <a href="{{route('trips.index')}}" data-toggle="tooltip" data-placement="right" title="TRIPS">
                         <i class="menu-icon fa fa-suitcase fa-lg"></i>TRIPS
                     </a>
                 </li>

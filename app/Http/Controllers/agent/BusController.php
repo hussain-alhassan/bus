@@ -5,6 +5,7 @@ namespace App\Http\Controllers\agent;
 use App\Bus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBusRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BusController extends Controller
 {
@@ -24,7 +25,7 @@ class BusController extends Controller
 
     public function store(StoreBusRequest $request)
     {
-        $agencyID = auth()->user()->agencies()->first()->id;
+        $agencyID = Auth::user()->agencies()->first()->id;
         Bus::create([
             'agency_id' => $agencyID,
             'licence_plate' => $request->licence_plate,
@@ -53,7 +54,8 @@ class BusController extends Controller
             return redirect()->back()->withErrors($e);
         }
 
-        return redirect('/agent/buses')->with('success', 'Bus has been updated successfully.');    }
+        return redirect('/agent/buses')->with('success', 'Bus has been updated successfully.');
+    }
 
     public function destroy(Bus $bus)
     {

@@ -1,5 +1,5 @@
 @extends('layouts.agentLayout')
-@section('title', 'Create Office')
+@section('title', 'Edit Trip')
 
 @section('content')
     <div class="container">
@@ -9,10 +9,10 @@
                 @include('common.validation-errors')
 
                 <div class="card">
-                    <div class="card-header">Add a New Office</div>
+                    <div class="card-header">Edit Trip</div>
                     <div class="card-body">
-                        <a href="/agent/offices" class="btn btn-success">Back to Offices</a>
-                        <div class="mt-4">@include('agent.partials.create-office-form')</div>
+                        <a href="{{ route('trips.index') }}" class="btn btn-success">Back to trips</a>
+                        <div class="mt-4">@include('agent.trips.edit-form')</div>
                     </div>
                 </div>
             </div>

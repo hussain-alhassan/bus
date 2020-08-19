@@ -229,5 +229,6 @@ return [
     ],
 
     'storage_disk' => env('STORAGE_DISK', 'public'),
+    'display_timestamps_format' => env('DISPLAY_DATETIME_FORMAT', 'l, F d, Y'),
 
 ];
