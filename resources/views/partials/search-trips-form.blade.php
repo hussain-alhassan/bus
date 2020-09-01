@@ -1,21 +1,10 @@
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@include('common.validation-errors')
 
 <div class="card">
 
     <div class="card-header">Find Trips</div>
     <div class="card-body">
         <form action="{{route('my_trip')}}">
-            @csrf
-
             <div class="container">
                 <div class="form-group row">
                     <div class="mr-3 flex-fill">
@@ -43,13 +32,13 @@
                     </div>
 
                     <div class="mr-3 flex-fill">
-                        <label class="col-form-label text-md-right">Depart</label>
+                        <label class="col-form-label text-md-right">Depart</label><span>&nbsp;(1 week flexible)</span>
                         <input type="date" class="form-control @error('depart') is-invalid @enderror"
                                name="depart" value="{{ old('depart') ?? Request::get('depart') }}" required>
                     </div>
 
                     <div class="mr-3 flex-fill">
-                        <label class="col-form-label text-md-right">Return</label>
+                        <label class="col-form-label text-md-right">Return</label><span>&nbsp;(1 week flexible)</span>
                         <input type="date" class="form-control @error('return') is-invalid @enderror"
                                name="return" value="{{ old('return') ?? Request::get('return') }}">
                     </div>
@@ -70,7 +59,6 @@
                     </div>
                 </div>
             </div>
-
         </form>
     </div>
 </div>

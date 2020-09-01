@@ -46,10 +46,18 @@
     </div>
 
     <div class="form-group row">
-        <label for="duration" class="col-md-4 col-form-label text-md-right">Duration</label>
+        <label for="duration" class="col-md-4 col-form-label text-md-right">Duration (hours)</label>
         <div class="col-md-6">
             <input id="duration" name="duration" type="number" value="{{ old('duration') }}"
                    class="form-control @error('duration') is-invalid @enderror" required>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="price" class="col-md-4 col-form-label text-md-right">Price / seat</label>
+        <div class="col-md-6">
+            <input id="price" name="price" type="number" value="{{ old('price') }}"
+                   class="form-control @error('price') is-invalid @enderror" required>
         </div>
     </div>
 

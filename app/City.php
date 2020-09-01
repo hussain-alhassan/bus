@@ -36,4 +36,12 @@ class City extends Model
 
         return $cities;
     }
+
+    public function getName()
+    {
+        // city name column will be either 'name' or 'name_<locale>'
+        $CityNameField = (App::getLocale() === 'ar') ? 'name' : 'name_' . App::getLocale();
+
+        return $this->$CityNameField;
+    }
 }

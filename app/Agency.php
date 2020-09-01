@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Agency extends Model
 {
@@ -36,5 +37,13 @@ class Agency extends Model
     public function deletePreviousLogo()
     {
         unlink("storage/agencies/$this->logo");
+    }
+
+    public function getName()
+    {
+        // Agency name column will be either 'name' or 'name_<locale>'
+        $agencyNameField = (App::getLocale() === 'ar') ? 'name' : 'name_' . App::getLocale();
+
+        return $this->$agencyNameField;
     }
 }
