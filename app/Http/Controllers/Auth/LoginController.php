@@ -35,7 +35,7 @@ class LoginController extends Controller
 
         switch ($role) {
             case 't':
-                return '/';
+                return session()->pull('from', '/');
                 break;
             case 'a':
                 return 'agent/dashboard';
@@ -62,5 +62,13 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
+    }
+
+    public function showLoginForm()
+    {
+        if(!session()->has('from')) {
+            session()->put('from', url()->previous());
+        }
+        return view('auth.login');
     }
 }

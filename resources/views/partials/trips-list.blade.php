@@ -1,3 +1,5 @@
+@include('common.success-message')
+
 <div class="row">
     <div class="col-md-12">
         <nav>
@@ -71,7 +73,7 @@
                                 <th scope="row">{{$key+1}}</th>
                                 <td>{{$trip['from']}}</td>
                                 <td>{{$trip['to']}}</td>
-                                <td>{{$trip['depart']->format(env('DISPLAY_DATETIME_FORMAT'))}}</td>
+                                <td>{{$trip['depart']}}</td>
                                 <td>{{$trip['return']}}</td>
                                 <td>{{$trip['agency_id']}}</td>
                                 <td>{{$trip['seats']}}</td>

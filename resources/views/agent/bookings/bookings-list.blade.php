@@ -53,12 +53,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Office</th>
-                                <td style='text-align: center;'>
-                                    <span style="color: #13b238">{{$booking->office->name}}</span>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>Nationality</th>
                                 <td style='text-align: center;'>
                                     <span style="color: #13b238">{{$booking->user->nationality}}</span>
@@ -141,19 +135,10 @@
         </div>
     </td>
     <td>{{$booking->user->name}}</td>
-    @if($booking->user->national_id)
-        <td>{{$booking->user->national_id}}</td>
-        <td>National ID</td>
-    @elseif($booking->user->passport_id)
-        <td>{{$booking->user->passport_id}}</td>
-        <td>Passport</td>
-    @else
-        <td>{{$booking->user->igama_id}}</td>
-        <td>Igama ID</td>
-    @endif
     <td>{{ (App::getLocale() === 'ar') ? $booking->trip->from_city->name : $booking->trip->from_city->name_en }}</td>
     <td>{{ (App::getLocale() === 'ar') ? $booking->trip->to_city->name : $booking->trip->to_city->name_en }}</td>
     <td>{{\Carbon\Carbon::parse($booking->trip->depart)->format('d/m/Y')}}</td>
+    <td>{{$booking->seats}}</td>
     @if($booking->status == 'Confirmed')
         <td><span class="badge badge-success">{{$booking->status}}</span></td>
     @elseif($booking->status == 'Pending')

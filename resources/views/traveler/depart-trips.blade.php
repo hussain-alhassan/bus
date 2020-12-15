@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @include('common.validation-errors')
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -30,7 +33,7 @@
         @if($availableTrips->isEmpty())
             <div class="p-3 mb-2 bg-danger text-white">Sorry! There are no available trips. Please try different dates</div>
         @else
-            <h4 class="text-center mb-2">Departure</h4>
+            <h4 class="text-center mb-2">Select your departure to {{$searchInputs['to']->getName()}}</h4>
             @foreach($availableTrips as $trip)
                 <div class="row">
                     <div class="col-md-12">
@@ -54,7 +57,15 @@
                                 <div class="float-right">
                                     <span class="font-weight-bold">SAR {{$trip->price}}</span><br>
                                     <span>SAR {{$trip->price * $searchInputs['seats']}}&nbsp;total</span><br>
-                                    <button type="button" class="btn btn-success">Select</button>
+                                    <a href="{{sprintf('%s?from=%s&to=%s&depart=%s&return=%s&seats=%s&depart_trip=%s',
+                                                $searchInputs['return'] === '-' ? 'checkout' : 'return',
+                                                $searchInputs['from']->id,
+                                                $searchInputs['to']->id,
+                                                $searchInputs['depart']->format('Y-m-d'),
+                                                $searchInputs['return'] !== '-' ? $searchInputs['return']->format('Y-m-d') : '',
+                                                $searchInputs['seats'],
+                                                $trip->id)}}" class="btn btn-success">Select
+                                    </a>
                                 </div>
                             </div>
                         </div>

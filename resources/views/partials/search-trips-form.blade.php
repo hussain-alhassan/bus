@@ -4,7 +4,7 @@
 
     <div class="card-header">Find Trips</div>
     <div class="card-body">
-        <form action="{{route('my_trip')}}">
+        <form action="{{route('depart')}}">
             <div class="container">
                 <div class="form-group row">
                     <div class="mr-3 flex-fill">
@@ -37,7 +37,7 @@
                                name="depart" value="{{ old('depart') ?? Request::get('depart') }}" required>
                     </div>
 
-                    <div class="mr-3 flex-fill">
+                    <div id="return-container" class="mr-3 flex-fill">
                         <label class="col-form-label text-md-right">Return</label><span>&nbsp;(1 week flexible)</span>
                         <input type="date" class="form-control @error('return') is-invalid @enderror"
                                name="return" value="{{ old('return') ?? Request::get('return') }}">

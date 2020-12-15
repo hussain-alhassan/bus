@@ -35,6 +35,7 @@ class FindTripsRequest extends FormRequest
                 }
             ],
             'seats' => 'required|min:1|max:2',
+            'depart-trip' => 'nullable|numeric',
         ];
     }
 

@@ -12,9 +12,4 @@ class Office extends Model
     {
         return $this->belongsTo(Agency::class);
     }
-
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class);
-    }
 }
