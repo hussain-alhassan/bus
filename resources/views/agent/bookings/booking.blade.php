@@ -11,14 +11,7 @@
             <div class="card">
                 <div class="card-header">Bookings</div>
                 <div class="card-body">
-
-                    {{-- show success message --}}
-                    @if (session('success'))
-                        <div class="alert alert-success text-center">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    {{----}}
+                    @include('common.success-message')
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="min">Start Date</label>
@@ -36,11 +29,10 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">ID Type</th>
                             <th scope="col">From</th>
                             <th scope="col">To</th>
                             <th scope="col">Departure</th>
+                            <th scope="col">Seats</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>

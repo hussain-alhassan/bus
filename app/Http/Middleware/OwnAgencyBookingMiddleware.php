@@ -19,10 +19,9 @@ class OwnAgencyBookingMiddleware
     public function handle($request, Closure $next)
     {
         $agency_id = Auth::user()->agencies()->first()->id;
-        $officesIds = Office::select('id')->where('agency_id', $agency_id)->get()->pluck('id');
         $requestedBooking = $request->route('booking');
 
-        if(in_array($requestedBooking->office_id, $officesIds->all())) return $next($request);
+        if($requestedBooking->trip->agency_id === $agency_id) return $next($request);
 
         abort(403);
 

@@ -30,7 +30,7 @@
             <select class="form-control" name="to">
                 @foreach($cities as $city)
                     <option value="{{$city->id}}"
-                        {{ (old('to') == $city->id || $trip->from_to_id == $city->id) ? 'selected' : ''}}>
+                        {{ (old('to') == $city->id || $trip->to_city_id == $city->id) ? 'selected' : ''}}>
                         {{$city->name}}
                     </option>
                 @endforeach
@@ -47,10 +47,18 @@
     </div>
 
     <div class="form-group row">
-        <label for="duration" class="col-md-4 col-form-label text-md-right">Duration</label>
+        <label for="duration" class="col-md-4 col-form-label text-md-right">Duration (hours)</label>
         <div class="col-md-6">
             <input id="duration" name="duration" type="number" value="{{ old('duration') ?? $trip->duration}}"
                    class="form-control @error('duration') is-invalid @enderror" required>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="price" class="col-md-4 col-form-label text-md-right">Price / seat</label>
+        <div class="col-md-6">
+            <input id="price" name="price" type="number" value="{{ old('price') ?? $trip->price}}"
+                   class="form-control @error('price') is-invalid @enderror" required>
         </div>
     </div>
 

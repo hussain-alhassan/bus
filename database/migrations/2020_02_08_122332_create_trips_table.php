@@ -32,10 +32,11 @@ class CreateTripsTable extends Migration
             $table->dateTime('depart');
             $table->string('duration');
             $table->integer('available_seats');
-            $table->boolean('is_bathroom');
+            $table->integer('price');
             $table->boolean('is_wifi');
-            $table->boolean('is_meal');
             $table->boolean('is_refreshment');
+            $table->boolean('is_meal');
+            $table->boolean('is_bathroom');
             $table->timestamps();
         });
     }

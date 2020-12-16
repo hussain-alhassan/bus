@@ -14,6 +14,7 @@
                             <th scope="col">From</th>
                             <th scope="col">To</th>
                             <th scope="col">Depart</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Available Seats</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -25,6 +26,7 @@
                                 <td>{{$trip->from_city->name_en}}</td>
                                 <td>{{$trip->to_city->name_en}}</td>
                                 <td>{{$trip->getDepart()}}</td>
+                                <td>SAR {{$trip->price}}</td>
                                 <td style="width: 12%">{{$trip->available_seats}}</td>
                                 <td>
                                     <div class="float-left mr-2">

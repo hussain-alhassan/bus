@@ -19,8 +19,13 @@ class AgenciesTableSeeder extends Seeder
                     'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
                 ],
                 [
-                    'name' => 'حملة الإسراء', 'name_en' => 'Al Esraa', 'logo' => 'agency_2.jpeg',
-                    'description' => 'This is a description Al Esraa agency',
+                    'name' => 'حملة الإسراء', 'name_en' => 'Al-Esraa', 'logo' => 'agency_2.png',
+                    'description' => 'This is a description for Al-Esraa agency',
+                    'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'السالم للنقل والسياحة', 'name_en' => 'Al-salem', 'logo' => 'agency_3.jpg',
+                    'description' => 'This is a description for Al-salem',
                     'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
                 ]
             ]

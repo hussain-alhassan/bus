@@ -18,11 +18,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'), 'role' => 's',
                 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
             ],
-            ['name' => 'Basil', 'email' => 'alrashedbasil@gmail.com',
-                'password' => bcrypt('secret'), 'role' => 's',
-                'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
-            ],
-            ['name' => 'Abu aqeel', 'email' => 'abu_aqeel@rumailah.com',
+            ['name' => 'Abu Aqeel', 'email' => 'abu_aqeel@rumailah.com',
                 'password' => bcrypt('secret'), 'role' => 'a',
                 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(),
             ],
@@ -34,8 +30,11 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('secret'), 'role' => 'a',
                 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(),
             ],
-        ]
-        );
+            ['name' => 'Abdullah', 'email' => 'abdullah@al-salem.com',
+                'password' => bcrypt('secret'), 'role' => 'a',
+                'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
+            ]
+        ]);
 
         // travelers
         DB::table('users')->insert([

@@ -16,11 +16,14 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about_us');
 
-Route::get('/trips/search', 'traveler\TripController@search')->name('my_trip');
+Route::get('/trips/depart', 'traveler\TripController@depart')->name('depart');
+Route::get('/trips/return', 'traveler\TripController@return')->name('return');
+Route::get('/trips/checkout', 'traveler\TripController@checkout')->name('checkout');
+Route::get('/trips/book', 'traveler\TripController@book')->name('book');
 Auth::routes();
 
 Route::group(['middleware'=>'auth'],function () {
-    Route::get('/trips', 'traveler\TripController@show');
+    Route::get('/trips', 'traveler\TripController@show')->name('trips');
 });
 
 /*///////////// Traveler Section //////////////*/
@@ -54,7 +57,7 @@ Route::group(['prefix' => 'agent', 'middleware' => 'agent'], function() {
     Route::post('/office/main-branch', 'agent\OfficeController@setMainBranch')->name('main_branch');
 
     // Booking protected routes
-    Route::group(['prefix' => 'office', 'middleware' => 'own.agency'], function() {
+    Route::group(['middleware' => 'own.agency'], function() {
         Route::get('/{booking}/approve', 'agent\BookingController@approve')->name('approve_booking');
         Route::get('/{booking}/pend', 'agent\BookingController@pend')->name('pend_booking');
         Route::get('/{booking}/reject', 'agent\BookingController@reject')->name('reject_booking');

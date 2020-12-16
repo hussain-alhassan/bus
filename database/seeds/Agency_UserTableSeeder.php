@@ -21,13 +21,18 @@ class Agency_UserTableSeeder extends Seeder
                     'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
                 ],
                 [
-                    'agency_id' => Agency::where('name_en', 'Al Esraa')->get('id')->first()->id,
+                    'agency_id' => Agency::where('name_en', 'Al-Esraa')->get('id')->first()->id,
                     'user_id' => User::where('email', 'abu_ali@al-esraa.com')->first()->id,
                     'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
                 ],
                 [
-                    'agency_id' => Agency::where('name_en', 'Al Esraa')->get('id')->first()->id,
+                    'agency_id' => Agency::where('name_en', 'Al-Esraa')->get('id')->first()->id,
                     'user_id' => User::where('email', 'ali_sager@al-esraa.com')->first()->id,
+                    'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
+                ],
+                [
+                    'agency_id' => Agency::where('name_en', 'Al-salem')->get('id')->first()->id,
+                    'user_id' => User::where('email', 'abdullah@al-salem.com')->first()->id,
                     'created_at' => Carbon::now(), 'updated_at' => Carbon::now()
                 ]
             ]

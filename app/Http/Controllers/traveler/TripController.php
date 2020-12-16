@@ -2,76 +2,95 @@
 
 namespace App\Http\Controllers\traveler;
 
+use App\Booking;
+use App\City;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FindTripsRequest;
-use Illuminate\Http\Request;
+use App\Trip;
 use Carbon\Carbon;
-use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
 
 class TripController extends Controller
 {
-    //
     /**
      * Search for available trips
      * @param FindTripsRequest $request
      * @return mixed
      * @throws \Exception
      */
-    public function search(FindTripsRequest $request)
+    public function depart(FindTripsRequest $request)
     {
-        $departDate = clone new Carbon($request->query('depart'));
+        $searchInputs = $this->getSearchInputs($request);
 
-        // need to work on the return trip more
-        $return = null;
-        if(!empty($request->query('return'))) $return = clone new Carbon($request->query('return'));
+//        $departFlexibleDate = (new Carbon($request->depart))->copy()->addWeeks(1);
 
-        $searchInputs = [
-            'from' => Str::ucfirst($request->query('from')),
-            'to' => Str::ucfirst($request->query('to')),
-            'depart' => $departDate,
-            'return' => $return,
-            'seats' => $request->query('seats'),
-        ];
+//        $availableTrips = Trip::whereBetween('depart', [
+//            $request->depart,
+//            $departFlexibleDate->format('Y-m-d')
+//        ])
 
-        /* "First" available trip calculation (later will come from the model) */
-        // assuming first trip depart at 9:30pm (travel agency will enter departure time)
-        $departureHour1 = '21'; // 9pm
-        $departureMinute1 = '30'; // because 9:30pm
+        $availableTrips = Trip::whereDate('depart', $request->depart)
+            ->where('from_city_id', $request->from)
+            ->where('to_city_id', $request->to)
+            ->get();
 
-        // initially comes from agency control panel, but later should be from multiple trips average calculation
-        $tripDuration1 = '10';
+        return view('traveler.depart-trips', compact('searchInputs', 'availableTrips'));
+    }
 
-        // total hours from beginning of the day because Datepicker starts at 00:00 time
-        $totalHours1 = intval($departureHour1) + intval($tripDuration1);
-        $arrivalDateTime1 = $departDate->copy()->addHours($totalHours1)->addMinutes($departureMinute1);
-
-        /* "Second" available trip calculation (later will come from the model) */
-        $departureHour2 = '20'; // 8pm
-        $departureMinute2 = '0'; // because 8:00pm
-        $tripDuration2 = '11';
-
-        $totalHours2 = intval($departureHour2) + intval($tripDuration2);
-        $arrivalDateTime2 = $departDate->copy()->addHours($totalHours2)->addMinutes($departureMinute2);
-
-        // Mock returned available trips from DB
-        $availableTrips = [
-            [
-                'agency' => 'Al salem',
-                'depart' => $departDate,
-                'depart_time' => '9:30pm',
-                'arrival_day' => $arrivalDateTime1->format('l'),
-                'arrival_time' => $arrivalDateTime1->format('h:ia')
-            ],
-            [
-                'agency' => 'Gulf Bus',
-                'depart' => $searchInputs['depart'],
-                'depart_time' => '8:00pm',
-                'arrival_day' => $arrivalDateTime2->format('l'),
-                'arrival_time' => $arrivalDateTime2->format('h:ia')
-            ]
-        ];
+    public function return(FindTripsRequest $request)
+    {
+        dd('return');
+        $searchInputs = $this->getSearchInputs($request);
 
         return view('available-trips', compact('searchInputs', 'availableTrips'));
+    }
+
+    public function checkout(FindTripsRequest $request)
+    {
+        $searchInputs = $this->getSearchInputs($request);
+
+        $trip = Trip::findOrFail($request->depart_trip);
+
+        if(Auth::guest() && !session()->has('from')) {
+            session()->put('from', url()->current());
+        }
+
+        return view('traveler.checkout', compact('searchInputs', 'trip'));
+    }
+
+    public function book(Request $request)
+    {
+        $departTripData = [
+            'user_id' => Auth::user()->id,
+            'trip_id' => $request->depart_trip,
+            'seats' => $request->seats,
+            'status' => 'Pending'
+        ];
+
+        try {
+            Booking::create($departTripData);
+            return redirect()->route('trips')->with('success', 'Trip has been booked successfully.');
+        } catch(\Exception $e) {
+            return redirect()->back()->withErrors('Unable to book trip');
+        }
+    }
+
+    protected function getSearchInputs($request)
+    {
+        $city_from = City::where('is_active', 1)->findOrFail($request->from);
+        $city_to = City::where('is_active', 1)->findOrFail($request->to);
+        $departDate =  new Carbon($request->depart);
+        $returnDate = $request->return ? clone new Carbon($request->return) : '-';
+
+        return [
+            'from' => $city_from,
+            'to' => $city_to,
+            'depart' => $departDate,
+            'return' => $returnDate,
+            'seats' => $request->seats,
+        ];
     }
 
     /**
@@ -121,11 +140,13 @@ class TripController extends Controller
             ],
         ];
 
+        $travelerTrips = Booking::where('user_id', Auth::user()->id)->get();
+
         $endOfToday = Carbon::today()->endOfDay();
 
         $upcomingTrips = [];
         $history = [];
-        foreach ($trips as $trip) {
+        foreach ($travelerTrips as $trip) {
             if ($trip['depart'] > $endOfToday) {
                 array_push($upcomingTrips, $trip);
             } else {

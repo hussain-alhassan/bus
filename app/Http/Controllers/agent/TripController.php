@@ -77,6 +77,7 @@ class TripController extends Controller
             'to_city_id' => $request->to,
             'depart' => $request->depart,
             'duration' => $request->duration,
+            'price' => $request->price,
             'available_seats' => $request->available_seats,
             'is_bathroom' => $request->is_bathroom,
             'is_wifi' => $request->is_wifi,

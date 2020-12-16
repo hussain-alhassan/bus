@@ -15,6 +15,7 @@ class StoreTripRequest extends FormRequest
             'to' => 'required|numeric|different:from',
             'depart' => 'required|date',
             'duration' => 'required|numeric|min:1|max:30',
+            'price' => 'required|numeric|min:1|max:3000',
             'available_seats' => 'required|numeric|min:1|max:200',
             'is_bathroom' => 'required|max:1',
             'is_wifi' => 'required|max:1',
