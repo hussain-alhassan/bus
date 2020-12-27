@@ -9,11 +9,6 @@ class Agency extends Model
 {
     protected $fillable = ['name', 'name_en', 'logo', 'description', 'hotline'];
 
-    public function offices()
-    {
-        return $this->hasMany(Office::class);
-    }
-
     public function buses()
     {
         return $this->hasMany(Bus::class);

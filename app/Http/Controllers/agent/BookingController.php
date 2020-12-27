@@ -4,20 +4,19 @@ namespace App\Http\Controllers\agent;
 
 use App\Booking;
 use App\Http\Controllers\Controller;
-use App\Office;
+use App\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
     public function index()
     {
-        $agencyId = DB::table('agency_user')->where('user_id', Auth::id())->first()->agency_id;
-        $officesIds = Office::select('id')->where('agency_id', $agencyId)->get()->toArray();
-        $bookings = Booking::whereIn('office_id', $officesIds)->orderBy('created_at', 'DESC')->get();
+        $agency_id = Auth::user()->agencies()->first()->id;
+        $tripIds = Trip::select('id')->where('agency_id', $agency_id)->get()->toArray();
+        $bookings = Booking::whereIn('trip_id', $tripIds)->orderBy('created_at', 'DESC')->get();
 
-        return view('agent.booking', compact('bookings'));
+        return view('agent.bookings.booking', compact('bookings'));
     }
 
     /**

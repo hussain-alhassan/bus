@@ -65,12 +65,6 @@
                         BUSES
                     </a>
                 </li>
-                <li class="font-weight-bold">
-                    <a href="{{ route('show_offices') }}" data-toggle="tooltip" data-placement="right" title="OFFICES">
-                        <i class="menu-icon fa fa-building fa-lg"></i>
-                        OFFICES
-                    </a>
-                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
