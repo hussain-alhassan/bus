@@ -59,12 +59,6 @@
                         <i class="menu-icon fa fa-handshake-o fa-lg"></i>PROFILE
                     </a>
                 </li>
-                <li class="font-weight-bold">
-                    <a href="{{ route('buses.index') }}" data-toggle="tooltip" data-placement="right" title="BUSES">
-                        <i class="menu-icon fa fa-bus fa-lg"></i>
-                        BUSES
-                    </a>
-                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
