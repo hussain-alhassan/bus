@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Office;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
