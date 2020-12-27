@@ -13,11 +13,7 @@ class OwnedByAgentMiddleware
     {
         $authAgencyID = Auth::user()->agencies()->first()->id;
 
-        if ($bus = $request->route('bus')) {
-            // if method === 'PUT', means $bus = the bus id only not the whole model
-            if ($request->method() === 'PUT') $bus = Bus::findOrFail($bus);
-            if($bus->agency_id === $authAgencyID) return $next($request);
-        } elseif ($trip = $request->route('trip')) {
+        if ($trip = $request->route('trip')) {
             if ($request->method() === 'PUT') $trip = Trip::findOrFail($trip);
             if ($trip->agency_id === $authAgencyID) return $next($request);
         }
