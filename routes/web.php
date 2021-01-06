@@ -18,7 +18,7 @@ Route::get('/about', 'HomeController@about')->name('about_us');
 Route::get('/trips/depart', 'traveler\TripController@depart')->name('depart');
 Route::get('/trips/return', 'traveler\TripController@return')->name('return');
 Route::get('/trips/checkout', 'traveler\TripController@checkout')->name('checkout');
-Route::get('/trips/book', 'traveler\TripController@book')->name('book');
+Route::get('/trips/book', 'traveler\TripController@book')->name('trips.book');
 Auth::routes();
 
 Route::group(['middleware'=>'auth'],function () {

@@ -24,6 +24,8 @@ class BookingsTableSeeder extends Seeder
                     'trip_id' => '1',
                     'seats' => '1',
                     'status' => 'Confirmed',
+                    'guest_name' => null,
+                    'guest_phone' => null,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],
@@ -32,6 +34,8 @@ class BookingsTableSeeder extends Seeder
                     'trip_id' => '1',
                     'seats' => '1',
                     'status' => 'Pending',
+                    'guest_name' => null,
+                    'guest_phone' => null,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],
@@ -40,6 +44,8 @@ class BookingsTableSeeder extends Seeder
                     'trip_id' => '2',
                     'seats' => '1',
                     'status' => 'Rejected',
+                    'guest_name' => null,
+                    'guest_phone' => null,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],
@@ -48,6 +54,8 @@ class BookingsTableSeeder extends Seeder
                     'trip_id' => '1',
                     'seats' => '1',
                     'status' => 'Confirmed',
+                    'guest_name' => null,
+                    'guest_phone' => null,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],
@@ -56,6 +64,18 @@ class BookingsTableSeeder extends Seeder
                     'trip_id' => '2',
                     'seats' => '3',
                     'status' => 'Pending',
+                    'guest_name' => null,
+                    'guest_phone' => null,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                ],
+                [
+                    'user_id' => null,
+                    'trip_id' => '2',
+                    'seats' => '2',
+                    'status' => 'Pending',
+                    'guest_name' => 'Hussain guest',
+                    'guest_phone' => '+966553048843',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now()
                 ],

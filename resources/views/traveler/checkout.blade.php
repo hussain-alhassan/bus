@@ -34,7 +34,9 @@
                                        $searchInputs['seats'])}}"
                        class="btn btn-success float-right">Book</a>
                     @else
-                    <!-- Trigger the modal with a button -->
+                        @include('common.validation-errors')
+
+                        <!-- Trigger the modal with a button -->
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login</button>
 
                         <!-- Modal -->
@@ -58,6 +60,12 @@
                             </div>
                         </div>
                     @endif
+                </div>
+                <div class="card">
+                    <div class="card-header">Or Book as a Guest</div>
+                    <div class="card-body">
+                        @include('traveler.guest-booking-form')
+                    </div>
                 </div>
             </div>
         </div>

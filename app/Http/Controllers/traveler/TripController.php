@@ -63,15 +63,24 @@ class TripController extends Controller
     public function book(Request $request)
     {
         $departTripData = [
-            'user_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id ?? null,
             'trip_id' => $request->depart_trip,
             'seats' => $request->seats,
-            'status' => 'Pending'
+            'status' => 'Pending',
         ];
+
+        if (Auth::guest()) {
+            $departTripData = array_merge($departTripData, [
+                'guest_name' => $request->guest_name,
+                'guest_phone' => $request->guest_phone,
+            ]);
+        }
 
         try {
             Booking::create($departTripData);
-            return redirect()->route('trips')->with('success', 'Trip has been booked successfully.');
+            if (Auth::guest()) return redirect()->route('home')->with('success', 'Trip request has been sent successfully. We will call you to confirm soon');
+
+            return redirect()->route('trips')->with('success', 'Trip request has been sent successfully. We will call you to confirm soon');
         } catch(\Exception $e) {
             return redirect()->back()->withErrors('Unable to book trip');
         }
