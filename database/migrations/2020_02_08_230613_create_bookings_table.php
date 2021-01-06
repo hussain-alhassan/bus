@@ -16,7 +16,7 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('user_id')->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
 
@@ -26,6 +26,10 @@ class CreateBookingsTable extends Migration
 
             $table->integer('seats');
             $table->string('status');
+
+            $table->string('guest_name')->nullable();
+            $table->string('guest_phone')->nullable();
+
             $table->timestamps();
         });
     }

@@ -1,4 +1,5 @@
 @include('common.validation-errors')
+@include('common.success-message')
 
 <div class="card">
 
